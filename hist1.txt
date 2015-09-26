@@ -1,0 +1,2135 @@
+/usr/local/Cellar/python/2.7.9/bin/python -u /Users/bryanhunt/Library/Application Support/IntelliJIdea15/python/helpers/pydev/pydevconsole.py 64862 64863
+Python 2.7.9 (default, Jan 29 2015, 06:27:40)
+Type "copyright", "credits" or "license" for more information.
+
+IPython 2.1.0 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object', use 'object??' for extra details.
+PyDev console: using IPython 2.1.0
+
+import sys; print('Python %s on %s' % (sys.version, sys.platform))
+sys.path.extend(['/common/machinelearningregression'])
+
+Python 2.7.9 (default, Jan 29 2015, 06:27:40)
+[GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.56)] on darwin
+In[2]: import pandas as pd
+Backend MacOSX is interactive backend. Turning interactive mode on.
+In[3]: pd.load("./data/crime.csv")
+/usr/local/lib/python2.7/site-packages/pandas/core/common.py:3317: FutureWarning: load is deprecated, use read_pickle
+  warnings.warn("load is deprecated, use read_pickle", FutureWarning)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/IPython/core/interactiveshell.py", line 2883, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-3-545612283438>", line 1, in <module>
+    pd.load("./data/crime.csv")
+  File "/usr/local/lib/python2.7/site-packages/pandas/core/common.py", line 3319, in load
+    return read_pickle(path)
+  File "/usr/local/lib/python2.7/site-packages/pandas/io/pickle.py", line 60, in read_pickle
+    return try_read(path)
+  File "/usr/local/lib/python2.7/site-packages/pandas/io/pickle.py", line 57, in try_read
+    return pc.load(fh, encoding=encoding, compat=True)
+  File "/usr/local/lib/python2.7/site-packages/pandas/compat/pickle_compat.py", line 116, in load
+    return up.load()
+  File "/usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/python2.7/pickle.py", line 858, in load
+    dispatch[key](self)
+KeyError: '"'
+In[4]: pd.load("./data/crime.csv")
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/IPython/core/interactiveshell.py", line 2883, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-4-545612283438>", line 1, in <module>
+    pd.load("./data/crime.csv")
+  File "/usr/local/lib/python2.7/site-packages/pandas/core/common.py", line 3319, in load
+    return read_pickle(path)
+  File "/usr/local/lib/python2.7/site-packages/pandas/io/pickle.py", line 60, in read_pickle
+    return try_read(path)
+  File "/usr/local/lib/python2.7/site-packages/pandas/io/pickle.py", line 57, in try_read
+    return pc.load(fh, encoding=encoding, compat=True)
+  File "/usr/local/lib/python2.7/site-packages/pandas/compat/pickle_compat.py", line 116, in load
+    return up.load()
+  File "/usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/python2.7/pickle.py", line 858, in load
+    dispatch[key](self)
+KeyError: '"'
+In[5]: import sys
+In[6]: import os
+In[7]: os.getcwd()
+Out[7]: '/common/machinelearningregression'
+In[8]: pd.load("./data/crime.csv")
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/IPython/core/interactiveshell.py", line 2883, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-8-545612283438>", line 1, in <module>
+    pd.load("./data/crime.csv")
+  File "/usr/local/lib/python2.7/site-packages/pandas/core/common.py", line 3319, in load
+    return read_pickle(path)
+  File "/usr/local/lib/python2.7/site-packages/pandas/io/pickle.py", line 60, in read_pickle
+    return try_read(path)
+  File "/usr/local/lib/python2.7/site-packages/pandas/io/pickle.py", line 57, in try_read
+    return pc.load(fh, encoding=encoding, compat=True)
+  File "/usr/local/lib/python2.7/site-packages/pandas/compat/pickle_compat.py", line 116, in load
+    return up.load()
+  File "/usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/python2.7/pickle.py", line 858, in load
+    dispatch[key](self)
+KeyError: '"'
+In[9]: bikes = pd.read_csv("data/bikes.csv")
+In[10]: bikes.head(5)
+Out[10]:
+         date  temperature   humidity  windspeed  count
+0  2011-01-03     2.716070  45.715346  21.414957    120
+1  2011-01-04     2.896673  54.267219  15.136882    108
+2  2011-01-05     4.235654  45.697702  17.034578     82
+3  2011-01-06     3.112643  50.237349  10.091568     88
+4  2011-01-07     2.723918  49.144928  15.738204    148
+In[11]: bikes.shape
+Out[11]: (729, 5)
+In[12]: bikes.iloc[1]
+Out[12]:
+date           2011-01-04
+temperature      2.896673
+humidity         54.26722
+windspeed        15.13688
+count                 108
+Name: 1, dtype: object
+In[13]: bikes['humidity'].head(4)
+Out[13]:
+0    45.715346
+1    54.267219
+2    45.697702
+3    50.237349
+Name: humidity, dtype: float64
+In[14]: bikes[['humidity','temperature']].head(4)
+Out[14]:
+    humidity  temperature
+0  45.715346     2.716070
+1  54.267219     2.896673
+2  45.697702     4.235654
+3  50.237349     3.112643
+In[15]: bikes[['humidity','temperature']].head(4) * 2
+Out[15]:
+     humidity  temperature
+0   91.430692     5.432139
+1  108.534438     5.793347
+2   91.395404     8.471307
+3  100.474699     6.225285
+In[16]: bikes[['humidity','temperature']].head(4) * pd.algos.ensure_float64()
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/IPython/core/interactiveshell.py", line 2883, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-16-8d20d8b69aa7>", line 1, in <module>
+    bikes[['humidity','temperature']].head(4) * pd.algos.ensure_float64()
+TypeError: ensure_float64() takes exactly one argument (0 given)
+In[17]: bikes[['humidity','temperature']].values
+Out[17]:
+array([[ 45.71534591,   2.71606966],
+       [ 54.26721902,   2.8966733 ],
+       [ 45.6977019 ,   4.23565354],
+       ...,
+       [ 54.01028278,   4.92488787],
+       [ 53.77763496,   4.30400079],
+       [ 53.54498715,   3.68311371]])
+In[18]: bikes[['humidity','temperature']].head(4)
+Out[18]:
+    humidity  temperature
+0  45.715346     2.716070
+1  54.267219     2.896673
+2  45.697702     4.235654
+3  50.237349     3.112643
+In[19]: bikes[['humidity','temperature']].values
+Out[19]:
+array([[ 45.71534591,   2.71606966],
+       [ 54.26721902,   2.8966733 ],
+       [ 45.6977019 ,   4.23565354],
+       ...,
+       [ 54.01028278,   4.92488787],
+       [ 53.77763496,   4.30400079],
+       [ 53.54498715,   3.68311371]])
+In[20]: bikes[['humidity','temperature']].values[1]
+Out[20]: array([ 54.26721902,   2.8966733 ])
+In[21]: bikes[['humidity','temperature']].values[0]
+Out[21]: array([ 45.71534591,   2.71606966])
+In[22]: bikes[['humidity','temperature']].values[1,0]
+Out[22]: 54.267219023136256
+In[23]: bikes[['humidity','temperature']].values[0,0]
+Out[23]: 45.715345912596405
+In[24]: import matplotlib.pyplot as plt
+In[25]: x  =  bikes.humidity.values
+In[26]: x
+Out[26]:
+array([ 45.71534591,  54.26721902,  45.6977019 ,  50.23734941,
+        49.14492833,  48.85125234,  48.55757635,  48.26390036,
+        59.62346036,  54.77588021,  47.56595692,  51.32977049,
+        55.85022455,  60.37067861,  64.89113267,  69.41158674,
+        62.71534982,  51.35807907,  46.82144668,  47.4664581 ,
+        48.11146951,  48.75648093,  55.74808751,  69.45809769,
+        59.68688946,  65.57993306,  62.05684483,  58.53375661,
+        55.01066838,  67.6191563 ,  64.59577697,  45.74622293,
+        53.97586951,  56.82563774,  59.67540596,  62.52517419,
+        51.33485152,  48.92644411,  45.7219345 ,  49.57307476,
+        47.1436546 ,  44.71423445,  42.28481429,  38.85177008,
+        44.94509553,  49.49691517,  50.14834766,  51.0013881 ,
+        51.85442853,  52.70746897,  53.56050941,  44.9208071 ,
+        60.23915815,  61.06457398,  64.12044956,  67.17632514,
+        70.23220072,  51.17197943,  46.40268062,  39.07427445,
+        55.3829235 ,  54.28272267,  53.18252185,  52.08232103,
+        44.79741069,  64.59577697,  21.3       ,  57.56877069,
+        54.72845728,  51.88814386,  49.04783044,  57.90864123,
+        64.65747517,  54.96415743,  50.62574098,  54.57468638,
+        58.52363177,  62.47257717,  56.17388884,  68.17751105,
+        66.29406879,  48.93856041,  45.34971661,  41.7608728 ,
+        38.172029  ,  38.84166386,  57.40695949,  72.57555979,
+        59.61709512,  54.77802057,  49.93894602,  45.09987147,
+        57.15100967,  47.58918447,  54.96415743,  67.99241645,
+        65.77213738,  63.5518583 ,  61.33157923,  62.57174098,
+        67.03857902,  51.47444021,  51.50351653,  51.53259285,
+        51.56166918,  51.5907455 ,  58.47710221,  55.59230653,
+        44.0296729 ,  62.03661378,  62.91293296,  63.78925213,
+        64.66557131,  62.01338622,  67.9459055 ,  60.43134386,
+        46.82144668,  51.90093018,  56.98041368,  62.05989717,
+        60.22196082,  62.45537985,  46.10027568,  54.24293059,
+        54.21966581,  54.19640103,  54.17313625,  48.61287208,
+        56.6392217 ,  63.03701799,  69.50460864,  68.10097923,
+        66.69734982,  65.29372041,  68.08549419,  69.87686375,
+        67.62016134,  61.47825902,  63.16108442,  64.84390982,
+        66.52673522,  62.66476288,  60.17544987,  59.1285347 ,
+        57.80244216,  57.5639828 ,  57.32552344,  57.08706409,
+        56.84860473,  59.10525131,  38.32982005,  41.07508288,
+        45.6504837 ,  50.22588452,  54.80128535,  54.68498005,
+        56.03430015,  53.03314334,  55.08046272,  53.02540082,
+        50.97033892,  48.91527702,  49.61322046,  47.63575126,
+        59.73340041,  62.3855855 ,  62.57946488,  62.77334427,
+        62.96722365,  64.31659959,  60.80359897,  60.57093254,
+        53.31232072,  54.89432586,  56.476331  ,  58.05833614,
+        56.70901604,  49.10143249,  45.54192093,  43.4248072 ,
+        46.13515889,  48.84551059,  51.55586229,  54.26621398,
+        62.80435157,  57.66285347,  63.61865614,  61.34645008,
+        59.07424401,  56.80203794,  52.52135537,  56.56942735,
+        47.89164524,  54.31272494,  55.42943445,  56.54614396,
+        57.66285347,  57.61634252,  60.78031558,  59.89627249,
+        53.70785923,  56.99593594,  60.28401265,  63.57208936,
+        51.49766776,  43.79706231,  53.87067548,  51.5907455 ,
+        51.74583784,  51.90093018,  52.05602252,  48.72917738,
+        58.01182519,  63.59537275,  56.52286057,  55.80165234,
+        55.08044411,  54.35923589,  53.14950447,  44.98356617,
+        44.96028278,  44.47172237,  50.00097923,  55.53023609,
+        61.05949296,  53.5914981 ,  53.42868185,  57.84895311,
+        61.6644145 ,  56.95716751,  52.24992051,  47.54267352,
+        46.72842478,  55.08046272,  64.38639393,  63.80475578,
+        59.95830571,  56.11185563,  52.26540555,  51.91643383,
+        54.68498005,  56.98819342,  61.89702509,  64.1286853 ,
+        66.3603455 ,  68.59200571,  70.82366591,  72.50576545,
+        73.76105861,  71.43562272,  67.60636997,  63.77711722,
+        59.94786447,  61.08277635,  60.22196082,  60.89667671,
+        54.26621398,  56.11963537,  57.97305676,  59.82647815,
+        70.50501285,  71.55192802,  71.66823332,  75.6       ,
+        73.2890255 ,  70.978051  ,  68.6670765 ,  70.73767928,
+        68.6903599 ,  60.33832195,  57.45347044,  59.56280442,
+        61.67213841,  63.78147239,  60.94318766,  57.47675383,
+        55.96450581,  59.50078982,  61.23982758,  62.97886535,
+        64.71790311,  66.45694087,  71.90089974,  71.36582838,
+        61.29215938,  58.74853707,  56.20491476,  53.66129244,
+        60.47791064,  71.28486694,  56.82532134,  53.35888751,
+        57.0424655 ,  60.7260435 ,  64.40962149,  56.08086694,
+        61.52482581,  66.6896073 ,  54.01026416,  56.19715362,
+        58.38404308,  60.57093254,  59.47750643,  61.43174807,
+        60.5011382 ,  56.05758355,  58.59344473,  61.12930591,
+        63.6651671 ,  61.59462015,  63.6418837 ,  66.71283486,
+        63.55464077,  60.39644668,  57.2382526 ,  54.08005851,
+        59.7566838 ,  73.22699229,  53.45190941,  44.19254499,
+        53.49845758,  62.80437018,  72.11028278,  75.04164524,
+        63.61865614,  60.43137177,  57.2440874 ,  59.09211136,
+        60.94013532,  62.78815928,  67.68995568,  55.54573974,
+        50.59034129,  56.24368319,  59.98931301,  63.73494283,
+        67.48057265,  74.32041841,  75.4836947 ,  53.68457584,
+        60.15216648,  59.68687085,  59.22157522,  58.75627959,
+        54.24293059,  58.36079692,  56.70901604,  49.24102118,
+        51.79238602,  54.34375085,  56.89511568,  54.54539136,
+        69.22543126,  63.59537275,  59.61709512,  60.68145887,
+        61.74582262,  62.81018638,  63.87455013,  49.43622201,
+        53.35888751,  56.84860473,  54.12080445,  51.39300416,
+        48.66520388,  45.9374036 ,  44.44843897,  50.56711373,
+        51.56746211,  54.53761162,  57.50776113,  60.47791064,
+        57.39886334,  68.62056555,  66.13125254,  49.63650386,
+        52.54814244,  55.45978103,  58.37141961,  61.2830582 ,
+        46.05370889,  49.0781491 ,  46.42596401,  55.01066838,
+        63.59537275,  72.18007712,  67.96913306,  57.2440874 ,
+        64.2700328 ,  62.68804627,  56.35226458,  50.01648288,
+        43.68070118,  44.5648001 ,  49.65978725,  58.87264072,
+        50.70670242,  52.48426201,  54.26182159,  56.03938118,
+        49.00835476,  61.6644145 ,  52.68417162,  51.45115681,
+        49.05488432,  46.65861183,  44.26233933,  49.7062982 ,
+        50.9625964 ,  63.33947877,  56.7322436 ,  56.17060851,
+        55.60897342,  55.04733833,  54.48570324,  53.00991578,
+        52.26540555,  62.47866324,  57.88774015,  53.29681707,
+        48.70589398,  43.4015238 ,  66.23544154,  55.66210087,
+        57.9885418 ,  55.18126437,  52.37398694,  49.56670951,
+        46.79821913,  49.96219219,  52.98663239,  44.0296729 ,
+        45.55740596,  47.08513902,  48.61287208,  55.77840617,
+        49.61322046,  53.66129244,  68.31810478,  66.2087708 ,
+        64.09943681,  61.99010283,  66.41042992,  67.15488432,
+        67.71323907,  60.05914458,  56.03433738,  52.00953018,
+        47.98472298,  37.49228792,  48.17082262,  45.8210983 ,
+        53.73108679,  52.30756134,  50.88403589,  49.46051044,
+        43.44809059,  47.51939013,  42.19179239,  42.35460864,
+        41.24566026,  40.13671188,  39.0277635 ,  45.58843188,
+        47.51838509,  47.33329049,  44.09946725,  43.84938015,
+        43.59929306,  43.34920596,  43.09911887,  53.07971013,
+        55.49922879,  60.08237213,  61.42398694,  62.76560175,
+        64.10721656,  46.65863044,  45.1929492 ,  63.5488618 ,
+        43.68070118,  46.82920781,  49.97771445,  53.12622108,
+        58.12813049,  65.80550838,  64.20023846,  62.36235794,
+        61.0362654 ,  59.71017285,  58.38408031,  59.59381172,
+        62.85091835,  52.12581686,  41.4240546 ,  49.41161717,
+        57.39917974,  65.38674231,  65.66591969,  60.26852761,
+        50.3344473 ,  50.52054694,  55.87920781,  61.23786869,
+        66.59652956,  64.06064977,  64.54921018,  61.31544278,
+        63.0137346 ,  62.1413053 ,  61.26887599,  60.39644668,
+        59.52401738,  58.70976864,  48.82225512,  63.47906746,
+        58.48488195,  53.49069645,  48.49651095,  55.54573974,
+        55.42943445,  52.963349  ,  47.42636823,  49.65978725,
+        51.89320627,  54.1266253 ,  67.82954437,  53.80088113,
+        53.10293769,  54.2196472 ,  57.72488668,  61.23012617,
+        64.73536566,  59.82647815,  54.35923589,  53.00991578,
+        53.33560411,  52.04053748,  50.74547085,  49.45040422,
+        42.1452256 ,  41.40077121,  44.89048843,  48.58958869,
+        47.81408977,  47.03859085,  46.26309193,  48.77568833,
+        47.8218509 ,  46.86801347,  46.47247496,  50.79972432,
+        55.12697368,  59.45422303,  58.57017995,  56.66244925,
+        50.86951866,  48.42671661,  51.38910499,  54.35149337,
+        57.31388175,  49.54342612,  53.52170375,  54.82456874,
+        68.43446591,  65.64269213,  62.85091835,  60.05914458,
+        57.8722365 ,  46.42596401,  54.61518571,  54.49882458,
+        55.87920781,  57.25959105,  58.63997429,  60.61749933,
+        59.1285347 ,  58.12813049,  57.17429306,  57.39143722,
+        57.60858139,  57.82572555,  60.59421594,  58.87264072,
+        55.94127825,  61.26887599,  58.09712319,  54.92537039,
+        51.75361758,  59.64037851,  55.89471147,  50.28793635,
+        53.17273203,  56.21267589,  59.25261974,  62.2925636 ,
+        58.91915167,  59.10525131,  56.80203794,  55.63881748,
+        57.78693851,  59.93505954,  62.08318057,  55.91799486,
+        52.12581686,  54.26621398,  54.1033419 ,  56.44145244,
+        58.77956298,  61.11767352,  63.45578406,  62.68804627,
+        66.55001861,  62.40886889,  58.08161954,  53.75437018,
+        49.42712082,  50.3344473 ,  53.52170375,  56.87183229,
+        58.84935733,  60.00483527,  61.16031321,  62.31579116,
+        70.01645244,  51.26505717,  55.82491712,  58.63997429,
+        55.36740123,  52.09482817,  48.82225512,  53.12622108,
+        56.52286057,  59.8729891 ,  59.82647815,  59.06650149,
+        58.30652483,  57.54654817,  69.96994149,  65.61940874,
+        61.6644145 ,  56.33676093,  58.20958049,  60.08240005,
+        61.95521961,  63.82803918,  56.52286057,  47.17041841,
+        51.40464586,  54.53763023,  57.6706146 ,  60.80359897,
+        52.47478859,  59.98935023,  61.96681943,  66.8059126 ,
+        62.21498951,  57.62406643,  53.03314334,  57.12778211,
+        56.82532134,  65.99166386,  66.36386314,  67.72098159,
+        69.07810005,  70.43521851,  67.38967249,  58.523669  ,
+        53.77765357,  50.4507526 ,  49.93118488,  49.41161717,
+        48.89204946,  52.963349  ,  51.86992288,  39.91990272,
+        51.49766776,  53.20182231,  54.90597686,  56.61013141,
+        58.31428596,  52.12581686,  55.94127825,  50.59034129,
+        52.42825902,  54.26617676,  56.1040945 ,  59.54730077,
+        55.56902314,  54.31272494,  53.05642674,  52.43603877,
+        51.8156508 ,  51.19526283,  65.22392607,  49.56670951,
+        52.32509368,  57.56977573,  59.76442632,  61.95907692,
+        64.15372751,  62.26928021,  48.38020566,  49.7062982 ,
+        63.96762787,  66.96102355,  69.95441923,  72.94781491,
+        54.61518571,  51.35807907,  48.42671661,  57.19757645,
+        62.11418787,  67.03079928,  71.94741069,  58.5003856 ,
+        56.22045563,  58.59346334,  52.38176668,  56.74878951,
+        61.11581234,  65.48283517,  66.37701239,  67.27118961,
+        57.75593121,  54.24293059,  54.01028278,  53.77763496,  53.54498715])
+In[27]: x.shape
+Out[27]: (729,)
+In[28]: y =  bikes.temperature.values
+In[29]: plt.plot(x,y,'o')
+Out[29]: [<matplotlib.lines.Line2D at 0x10f3e1a10>]
+In[30]: plt.xlabel("humidity")
+Out[30]: <matplotlib.text.Text at 0x10f50c150>
+In[31]: plt.xlabel("temperature")
+Out[31]: <matplotlib.text.Text at 0x10f50c150>
+In[32]: plt.show()
+In[33]: plt.ylabel("temperature")
+Out[33]: <matplotlib.text.Text at 0x10f52a0d0>
+In[34]: plt.xlabel("humidity")
+Out[34]: <matplotlib.text.Text at 0x10f50c150>
+In[35]: plt.plot?
+Type:        function
+String form: <function plot at 0x10f3eb398>
+File:        /usr/local/lib/python2.7/site-packages/matplotlib/pyplot.py
+Definition:  plt.plot(*args, **kwargs)
+Docstring:
+Plot lines and/or markers to the
+:class:`~matplotlib.axes.Axes`.  *args* is a variable length
+argument, allowing for multiple *x*, *y* pairs with an
+optional format string.  For example, each of the following is
+legal::
+
+    plot(x, y)        # plot x and y using default line style and color
+    plot(x, y, 'bo')  # plot x and y using blue circle markers
+    plot(y)           # plot y using x as index array 0..N-1
+    plot(y, 'r+')     # ditto, but with red plusses
+
+If *x* and/or *y* is 2-dimensional, then the corresponding columns
+will be plotted.
+
+An arbitrary number of *x*, *y*, *fmt* groups can be
+specified, as in::
+
+    a.plot(x1, y1, 'g^', x2, y2, 'g-')
+
+Return value is a list of lines that were added.
+
+By default, each line is assigned a different color specified by a
+'color cycle'.  To change this behavior, you can edit the
+axes.color_cycle rcParam. Alternatively, you can use
+:meth:`~matplotlib.axes.Axes.set_default_color_cycle`.
+
+The following format string characters are accepted to control
+the line style or marker:
+
+================    ===============================
+character           description
+================    ===============================
+``'-'``             solid line style
+``'--'``            dashed line style
+``'-.'``            dash-dot line style
+``':'``             dotted line style
+``'.'``             point marker
+``','``             pixel marker
+``'o'``             circle marker
+``'v'``             triangle_down marker
+``'^'``             triangle_up marker
+``'<'``             triangle_left marker
+``'>'``             triangle_right marker
+``'1'``             tri_down marker
+``'2'``             tri_up marker
+``'3'``             tri_left marker
+``'4'``             tri_right marker
+``'s'``             square marker
+``'p'``             pentagon marker
+``'*'``             star marker
+``'h'``             hexagon1 marker
+``'H'``             hexagon2 marker
+``'+'``             plus marker
+``'x'``             x marker
+``'D'``             diamond marker
+``'d'``             thin_diamond marker
+``'|'``             vline marker
+``'_'``             hline marker
+================    ===============================
+
+
+The following color abbreviations are supported:
+
+==========  ========
+character   color
+==========  ========
+'b'         blue
+'g'         green
+'r'         red
+'c'         cyan
+'m'         magenta
+'y'         yellow
+'k'         black
+'w'         white
+==========  ========
+
+In addition, you can specify colors in many weird and
+wonderful ways, including full names (``'green'``), hex
+strings (``'#008000'``), RGB or RGBA tuples (``(0,1,0,1)``) or
+grayscale intensities as a string (``'0.8'``).  Of these, the
+string specifications can be used in place of a ``fmt`` group,
+but the tuple forms can be used only as ``kwargs``.
+
+Line styles and colors are combined in a single format string, as in
+``'bo'`` for blue circles.
+
+The *kwargs* can be used to set line properties (any property that has
+a ``set_*`` method).  You can use this to set a line label (for auto
+legends), linewidth, anitialising, marker face color, etc.  Here is an
+example::
+
+    plot([1,2,3], [1,2,3], 'go-', label='line 1', linewidth=2)
+    plot([1,2,3], [1,4,9], 'rs',  label='line 2')
+    axis([0, 4, 0, 10])
+    legend()
+
+If you make multiple lines with one plot command, the kwargs
+apply to all those lines, e.g.::
+
+    plot(x1, y1, x2, y2, antialised=False)
+
+Neither line will be antialiased.
+
+You do not need to use format strings, which are just
+abbreviations.  All of the line properties can be controlled
+by keyword arguments.  For example, you can set the color,
+marker, linestyle, and markercolor with::
+
+    plot(x, y, color='green', linestyle='dashed', marker='o',
+         markerfacecolor='blue', markersize=12).
+
+See :class:`~matplotlib.lines.Line2D` for details.
+
+The kwargs are :class:`~matplotlib.lines.Line2D` properties:
+
+  agg_filter: unknown
+  alpha: float (0.0 transparent through 1.0 opaque)
+  animated: [True | False]
+  antialiased or aa: [True | False]
+  axes: an :class:`~matplotlib.axes.Axes` instance
+  clip_box: a :class:`matplotlib.transforms.Bbox` instance
+  clip_on: [True | False]
+  clip_path: [ (:class:`~matplotlib.path.Path`,         :class:`~matplotlib.transforms.Transform`) |         :class:`~matplotlib.patches.Patch` | None ]
+  color or c: any matplotlib color
+  contains: a callable function
+  dash_capstyle: ['butt' | 'round' | 'projecting']
+  dash_joinstyle: ['miter' | 'round' | 'bevel']
+  dashes: sequence of on/off ink in points
+  drawstyle: ['default' | 'steps' | 'steps-pre' | 'steps-mid' |                   'steps-post']
+  figure: a :class:`matplotlib.figure.Figure` instance
+  fillstyle: ['full' | 'left' | 'right' | 'bottom' | 'top' | 'none']
+  gid: an id string
+  label: string or anything printable with '%s' conversion.
+  linestyle or ls: [``'-'`` | ``'--'`` | ``'-.'`` | ``':'`` | ``'None'`` |                   ``' '`` | ``''``]         and any drawstyle in combination with a linestyle, e.g., ``'steps--'``.
+  linewidth or lw: float value in points
+  lod: [True | False]
+  marker: unknown
+  markeredgecolor or mec: any matplotlib color
+  markeredgewidth or mew: float value in points
+  markerfacecolor or mfc: any matplotlib color
+  markerfacecoloralt or mfcalt: any matplotlib color
+  markersize or ms: float
+  markevery: None | integer | (startind, stride)
+  path_effects: unknown
+  picker: float distance in points or callable pick function         ``fn(artist, event)``
+  pickradius: float distance in points
+  rasterized: [True | False | None]
+  sketch_params: unknown
+  snap: unknown
+  solid_capstyle: ['butt' | 'round' |  'projecting']
+  solid_joinstyle: ['miter' | 'round' | 'bevel']
+  transform: a :class:`matplotlib.transforms.Transform` instance
+  url: a url string
+  visible: [True | False]
+  xdata: 1D array
+  ydata: 1D array
+  zorder: any number
+
+kwargs *scalex* and *scaley*, if defined, are passed on to
+:meth:`~matplotlib.axes.Axes.autoscale_view` to determine
+whether the *x* and *y* axes are autoscaled; the default is
+*True*.
+
+Additional kwargs: hold = [True|False] overrides default hold state
+In[36]: plt.plot(x,y,'x')
+Out[36]: [<matplotlib.lines.Line2D at 0x114ce5190>]
+In[37]: plt.show()
+In[38]: plt.show()
+In[39]: plt.plot(x,y,'o')
+Out[39]: [<matplotlib.lines.Line2D at 0x114d099d0>]
+In[40]: plt.show()
+In[41]: plt.plot(x,y,'plus')
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/IPython/core/interactiveshell.py", line 2883, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-41-f385d53d6193>", line 1, in <module>
+    plt.plot(x,y,'plus')
+  File "/usr/local/lib/python2.7/site-packages/matplotlib/pyplot.py", line 2987, in plot
+    ret = ax.plot(*args, **kwargs)
+  File "/usr/local/lib/python2.7/site-packages/matplotlib/axes.py", line 4137, in plot
+    for line in self._get_lines(*args, **kwargs):
+  File "/usr/local/lib/python2.7/site-packages/matplotlib/axes.py", line 317, in _grab_next_args
+    for seg in self._plot_args(remaining, kwargs):
+  File "/usr/local/lib/python2.7/site-packages/matplotlib/axes.py", line 276, in _plot_args
+    linestyle, marker, color = _process_plot_format(tup[-1])
+  File "/usr/local/lib/python2.7/site-packages/matplotlib/axes.py", line 129, in _process_plot_format
+    'Unrecognized character %c in format string' % c)
+ValueError: Unrecognized character l in format string
+In[42]: plt.plot(x,y,"plus")
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/IPython/core/interactiveshell.py", line 2883, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-42-5d6bec54b040>", line 1, in <module>
+    plt.plot(x,y,"plus")
+  File "/usr/local/lib/python2.7/site-packages/matplotlib/pyplot.py", line 2987, in plot
+    ret = ax.plot(*args, **kwargs)
+  File "/usr/local/lib/python2.7/site-packages/matplotlib/axes.py", line 4137, in plot
+    for line in self._get_lines(*args, **kwargs):
+  File "/usr/local/lib/python2.7/site-packages/matplotlib/axes.py", line 317, in _grab_next_args
+    for seg in self._plot_args(remaining, kwargs):
+  File "/usr/local/lib/python2.7/site-packages/matplotlib/axes.py", line 276, in _plot_args
+    linestyle, marker, color = _process_plot_format(tup[-1])
+  File "/usr/local/lib/python2.7/site-packages/matplotlib/axes.py", line 129, in _process_plot_format
+    'Unrecognized character %c in format string' % c)
+ValueError: Unrecognized character l in format string
+In[43]: plt.plot?
+Type:        function
+String form: <function plot at 0x10f3eb398>
+File:        /usr/local/lib/python2.7/site-packages/matplotlib/pyplot.py
+Definition:  plt.plot(*args, **kwargs)
+Docstring:
+Plot lines and/or markers to the
+:class:`~matplotlib.axes.Axes`.  *args* is a variable length
+argument, allowing for multiple *x*, *y* pairs with an
+optional format string.  For example, each of the following is
+legal::
+
+    plot(x, y)        # plot x and y using default line style and color
+    plot(x, y, 'bo')  # plot x and y using blue circle markers
+    plot(y)           # plot y using x as index array 0..N-1
+    plot(y, 'r+')     # ditto, but with red plusses
+
+If *x* and/or *y* is 2-dimensional, then the corresponding columns
+will be plotted.
+
+An arbitrary number of *x*, *y*, *fmt* groups can be
+specified, as in::
+
+    a.plot(x1, y1, 'g^', x2, y2, 'g-')
+
+Return value is a list of lines that were added.
+
+By default, each line is assigned a different color specified by a
+'color cycle'.  To change this behavior, you can edit the
+axes.color_cycle rcParam. Alternatively, you can use
+:meth:`~matplotlib.axes.Axes.set_default_color_cycle`.
+
+The following format string characters are accepted to control
+the line style or marker:
+
+================    ===============================
+character           description
+================    ===============================
+``'-'``             solid line style
+``'--'``            dashed line style
+``'-.'``            dash-dot line style
+``':'``             dotted line style
+``'.'``             point marker
+``','``             pixel marker
+``'o'``             circle marker
+``'v'``             triangle_down marker
+``'^'``             triangle_up marker
+``'<'``             triangle_left marker
+``'>'``             triangle_right marker
+``'1'``             tri_down marker
+``'2'``             tri_up marker
+``'3'``             tri_left marker
+``'4'``             tri_right marker
+``'s'``             square marker
+``'p'``             pentagon marker
+``'*'``             star marker
+``'h'``             hexagon1 marker
+``'H'``             hexagon2 marker
+``'+'``             plus marker
+``'x'``             x marker
+``'D'``             diamond marker
+``'d'``             thin_diamond marker
+``'|'``             vline marker
+``'_'``             hline marker
+================    ===============================
+
+
+The following color abbreviations are supported:
+
+==========  ========
+character   color
+==========  ========
+'b'         blue
+'g'         green
+'r'         red
+'c'         cyan
+'m'         magenta
+'y'         yellow
+'k'         black
+'w'         white
+==========  ========
+
+In addition, you can specify colors in many weird and
+wonderful ways, including full names (``'green'``), hex
+strings (``'#008000'``), RGB or RGBA tuples (``(0,1,0,1)``) or
+grayscale intensities as a string (``'0.8'``).  Of these, the
+string specifications can be used in place of a ``fmt`` group,
+but the tuple forms can be used only as ``kwargs``.
+
+Line styles and colors are combined in a single format string, as in
+``'bo'`` for blue circles.
+
+The *kwargs* can be used to set line properties (any property that has
+a ``set_*`` method).  You can use this to set a line label (for auto
+legends), linewidth, anitialising, marker face color, etc.  Here is an
+example::
+
+    plot([1,2,3], [1,2,3], 'go-', label='line 1', linewidth=2)
+    plot([1,2,3], [1,4,9], 'rs',  label='line 2')
+    axis([0, 4, 0, 10])
+    legend()
+
+If you make multiple lines with one plot command, the kwargs
+apply to all those lines, e.g.::
+
+    plot(x1, y1, x2, y2, antialised=False)
+
+Neither line will be antialiased.
+
+You do not need to use format strings, which are just
+abbreviations.  All of the line properties can be controlled
+by keyword arguments.  For example, you can set the color,
+marker, linestyle, and markercolor with::
+
+    plot(x, y, color='green', linestyle='dashed', marker='o',
+         markerfacecolor='blue', markersize=12).
+
+See :class:`~matplotlib.lines.Line2D` for details.
+
+The kwargs are :class:`~matplotlib.lines.Line2D` properties:
+
+  agg_filter: unknown
+  alpha: float (0.0 transparent through 1.0 opaque)
+  animated: [True | False]
+  antialiased or aa: [True | False]
+  axes: an :class:`~matplotlib.axes.Axes` instance
+  clip_box: a :class:`matplotlib.transforms.Bbox` instance
+  clip_on: [True | False]
+  clip_path: [ (:class:`~matplotlib.path.Path`,         :class:`~matplotlib.transforms.Transform`) |         :class:`~matplotlib.patches.Patch` | None ]
+  color or c: any matplotlib color
+  contains: a callable function
+  dash_capstyle: ['butt' | 'round' | 'projecting']
+  dash_joinstyle: ['miter' | 'round' | 'bevel']
+  dashes: sequence of on/off ink in points
+  drawstyle: ['default' | 'steps' | 'steps-pre' | 'steps-mid' |                   'steps-post']
+  figure: a :class:`matplotlib.figure.Figure` instance
+  fillstyle: ['full' | 'left' | 'right' | 'bottom' | 'top' | 'none']
+  gid: an id string
+  label: string or anything printable with '%s' conversion.
+  linestyle or ls: [``'-'`` | ``'--'`` | ``'-.'`` | ``':'`` | ``'None'`` |                   ``' '`` | ``''``]         and any drawstyle in combination with a linestyle, e.g., ``'steps--'``.
+  linewidth or lw: float value in points
+  lod: [True | False]
+  marker: unknown
+  markeredgecolor or mec: any matplotlib color
+  markeredgewidth or mew: float value in points
+  markerfacecolor or mfc: any matplotlib color
+  markerfacecoloralt or mfcalt: any matplotlib color
+  markersize or ms: float
+  markevery: None | integer | (startind, stride)
+  path_effects: unknown
+  picker: float distance in points or callable pick function         ``fn(artist, event)``
+  pickradius: float distance in points
+  rasterized: [True | False | None]
+  sketch_params: unknown
+  snap: unknown
+  solid_capstyle: ['butt' | 'round' |  'projecting']
+  solid_joinstyle: ['miter' | 'round' | 'bevel']
+  transform: a :class:`matplotlib.transforms.Transform` instance
+  url: a url string
+  visible: [True | False]
+  xdata: 1D array
+  ydata: 1D array
+  zorder: any number
+
+kwargs *scalex* and *scaley*, if defined, are passed on to
+:meth:`~matplotlib.axes.Axes.autoscale_view` to determine
+whether the *x* and *y* axes are autoscaled; the default is
+*True*.
+
+Additional kwargs: hold = [True|False] overrides default hold state
+In[44]: plt.plot(x,y,"+")
+Out[44]: [<matplotlib.lines.Line2D at 0x10f5c7210>]
+In[45]: plt.show()
+In[46]: plt.plot(x,y,".")
+Out[46]: [<matplotlib.lines.Line2D at 0x10f5be0d0>]
+In[47]: plt.show()
+In[48]: plt.plot?
+Type:        function
+String form: <function plot at 0x10f3eb398>
+File:        /usr/local/lib/python2.7/site-packages/matplotlib/pyplot.py
+Definition:  plt.plot(*args, **kwargs)
+Docstring:
+Plot lines and/or markers to the
+:class:`~matplotlib.axes.Axes`.  *args* is a variable length
+argument, allowing for multiple *x*, *y* pairs with an
+optional format string.  For example, each of the following is
+legal::
+
+    plot(x, y)        # plot x and y using default line style and color
+    plot(x, y, 'bo')  # plot x and y using blue circle markers
+    plot(y)           # plot y using x as index array 0..N-1
+    plot(y, 'r+')     # ditto, but with red plusses
+
+If *x* and/or *y* is 2-dimensional, then the corresponding columns
+will be plotted.
+
+An arbitrary number of *x*, *y*, *fmt* groups can be
+specified, as in::
+
+    a.plot(x1, y1, 'g^', x2, y2, 'g-')
+
+Return value is a list of lines that were added.
+
+By default, each line is assigned a different color specified by a
+'color cycle'.  To change this behavior, you can edit the
+axes.color_cycle rcParam. Alternatively, you can use
+:meth:`~matplotlib.axes.Axes.set_default_color_cycle`.
+
+The following format string characters are accepted to control
+the line style or marker:
+
+================    ===============================
+character           description
+================    ===============================
+``'-'``             solid line style
+``'--'``            dashed line style
+``'-.'``            dash-dot line style
+``':'``             dotted line style
+``'.'``             point marker
+``','``             pixel marker
+``'o'``             circle marker
+``'v'``             triangle_down marker
+``'^'``             triangle_up marker
+``'<'``             triangle_left marker
+``'>'``             triangle_right marker
+``'1'``             tri_down marker
+``'2'``             tri_up marker
+``'3'``             tri_left marker
+``'4'``             tri_right marker
+``'s'``             square marker
+``'p'``             pentagon marker
+``'*'``             star marker
+``'h'``             hexagon1 marker
+``'H'``             hexagon2 marker
+``'+'``             plus marker
+``'x'``             x marker
+``'D'``             diamond marker
+``'d'``             thin_diamond marker
+``'|'``             vline marker
+``'_'``             hline marker
+================    ===============================
+
+
+The following color abbreviations are supported:
+
+==========  ========
+character   color
+==========  ========
+'b'         blue
+'g'         green
+'r'         red
+'c'         cyan
+'m'         magenta
+'y'         yellow
+'k'         black
+'w'         white
+==========  ========
+
+In addition, you can specify colors in many weird and
+wonderful ways, including full names (``'green'``), hex
+strings (``'#008000'``), RGB or RGBA tuples (``(0,1,0,1)``) or
+grayscale intensities as a string (``'0.8'``).  Of these, the
+string specifications can be used in place of a ``fmt`` group,
+but the tuple forms can be used only as ``kwargs``.
+
+Line styles and colors are combined in a single format string, as in
+``'bo'`` for blue circles.
+
+The *kwargs* can be used to set line properties (any property that has
+a ``set_*`` method).  You can use this to set a line label (for auto
+legends), linewidth, anitialising, marker face color, etc.  Here is an
+example::
+
+    plot([1,2,3], [1,2,3], 'go-', label='line 1', linewidth=2)
+    plot([1,2,3], [1,4,9], 'rs',  label='line 2')
+    axis([0, 4, 0, 10])
+    legend()
+
+If you make multiple lines with one plot command, the kwargs
+apply to all those lines, e.g.::
+
+    plot(x1, y1, x2, y2, antialised=False)
+
+Neither line will be antialiased.
+
+You do not need to use format strings, which are just
+abbreviations.  All of the line properties can be controlled
+by keyword arguments.  For example, you can set the color,
+marker, linestyle, and markercolor with::
+
+    plot(x, y, color='green', linestyle='dashed', marker='o',
+         markerfacecolor='blue', markersize=12).
+
+See :class:`~matplotlib.lines.Line2D` for details.
+
+The kwargs are :class:`~matplotlib.lines.Line2D` properties:
+
+  agg_filter: unknown
+  alpha: float (0.0 transparent through 1.0 opaque)
+  animated: [True | False]
+  antialiased or aa: [True | False]
+  axes: an :class:`~matplotlib.axes.Axes` instance
+  clip_box: a :class:`matplotlib.transforms.Bbox` instance
+  clip_on: [True | False]
+  clip_path: [ (:class:`~matplotlib.path.Path`,         :class:`~matplotlib.transforms.Transform`) |         :class:`~matplotlib.patches.Patch` | None ]
+  color or c: any matplotlib color
+  contains: a callable function
+  dash_capstyle: ['butt' | 'round' | 'projecting']
+  dash_joinstyle: ['miter' | 'round' | 'bevel']
+  dashes: sequence of on/off ink in points
+  drawstyle: ['default' | 'steps' | 'steps-pre' | 'steps-mid' |                   'steps-post']
+  figure: a :class:`matplotlib.figure.Figure` instance
+  fillstyle: ['full' | 'left' | 'right' | 'bottom' | 'top' | 'none']
+  gid: an id string
+  label: string or anything printable with '%s' conversion.
+  linestyle or ls: [``'-'`` | ``'--'`` | ``'-.'`` | ``':'`` | ``'None'`` |                   ``' '`` | ``''``]         and any drawstyle in combination with a linestyle, e.g., ``'steps--'``.
+  linewidth or lw: float value in points
+  lod: [True | False]
+  marker: unknown
+  markeredgecolor or mec: any matplotlib color
+  markeredgewidth or mew: float value in points
+  markerfacecolor or mfc: any matplotlib color
+  markerfacecoloralt or mfcalt: any matplotlib color
+  markersize or ms: float
+  markevery: None | integer | (startind, stride)
+  path_effects: unknown
+  picker: float distance in points or callable pick function         ``fn(artist, event)``
+  pickradius: float distance in points
+  rasterized: [True | False | None]
+  sketch_params: unknown
+  snap: unknown
+  solid_capstyle: ['butt' | 'round' |  'projecting']
+  solid_joinstyle: ['miter' | 'round' | 'bevel']
+  transform: a :class:`matplotlib.transforms.Transform` instance
+  url: a url string
+  visible: [True | False]
+  xdata: 1D array
+  ydata: 1D array
+  zorder: any number
+
+kwargs *scalex* and *scaley*, if defined, are passed on to
+:meth:`~matplotlib.axes.Axes.autoscale_view` to determine
+whether the *x* and *y* axes are autoscaled; the default is
+*True*.
+
+Additional kwargs: hold = [True|False] overrides default hold state
+In[49]: plt.plot(x,y,"+")
+Out[49]: [<matplotlib.lines.Line2D at 0x10f5c7190>]
+In[50]: plt.close()
+In[51]: plt.plot(x,y,"+")
+Out[51]: [<matplotlib.lines.Line2D at 0x114d01650>]
+In[52]: plt.close()
+In[53]: plt.plot(x,y,".")
+Out[53]: [<matplotlib.lines.Line2D at 0x114986c90>]
+In[54]: plt.show()
+In[55]: plt.plot(x,y,"+")
+Out[55]: [<matplotlib.lines.Line2D at 0x111f04910>]
+In[56]: plt.close()
+In[57]: plt.show()
+In[58]: plt.plot(x,y,".")
+Out[58]: [<matplotlib.lines.Line2D at 0x1146bdd10>]
+In[59]: plt.show()
+In[60]: plt.xlabel("humidity")
+Out[60]: <matplotlib.text.Text at 0x11499ae50>
+In[61]: plt.ylabel("temperature")
+Out[61]: <matplotlib.text.Text at 0x1148b29d0>
+In[62]: plt.plot(y,x,".")
+Out[62]: [<matplotlib.lines.Line2D at 0x117bf6490>]
+In[63]: plt.plot(x,y,".")
+Out[63]: [<matplotlib.lines.Line2D at 0x117c119d0>]
+In[64]: plt.close()
+In[65]: y =  bikes.count.values
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/IPython/core/interactiveshell.py", line 2883, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-65-66c223e64ffd>", line 1, in <module>
+    y =  bikes.count.values
+AttributeError: 'function' object has no attribute 'values'
+In[66]: y =  bikes.count
+In[67]: y
+Out[67]:
+<bound method DataFrame.count of            date  temperature   humidity  windspeed       count
+0    2011-01-03     2.716070  45.715346  21.414957  120.000000
+1    2011-01-04     2.896673  54.267219  15.136882  108.000000
+2    2011-01-05     4.235654  45.697702  17.034578   82.000000
+3    2011-01-06     3.112643  50.237349  10.091568   88.000000
+4    2011-01-07     2.723918  49.144928  15.738204  148.000000
+5    2011-01-08     1.967445  48.851252  17.035029  112.333333
+6    2011-01-09     1.210973  48.557576  18.331855   76.666667
+7    2011-01-10     0.454501  48.263900  19.628680   41.000000
+8    2011-01-11     1.361393  59.623460  12.414597   43.000000
+9    2011-01-12     1.541997  54.775880  25.432188   25.000000
+10   2011-01-13     1.158189  47.565957  25.173470   38.000000
+11   2011-01-14     0.953048  51.329770  12.729596   54.000000
+12   2011-01-15     1.645921  55.850225  13.090300   42.750000
+13   2011-01-16     2.338794  60.370679  13.451004   31.500000
+14   2011-01-17     3.031667  64.891133  13.811708   20.250000
+15   2011-01-18     3.724539  69.411587  14.172412    9.000000
+16   2011-01-19     7.475045  62.715350  18.562278   78.000000
+17   2011-01-20     5.959733  51.358079  17.676844   83.000000
+18   2011-01-21     1.779077  46.821447  28.899955   75.000000
+19   2011-01-22     0.452718  47.466458  24.265518   78.666667
+20   2011-01-23    -0.873641  48.111470  19.631082   82.333333
+21   2011-01-24    -2.200000  48.756481  14.996645   86.000000
+22   2011-01-25     4.062848  55.748088  12.961280  186.000000
+23   2011-01-26     3.765915  69.458098  24.663452   34.000000
+24   2011-01-27     2.648318  59.686889  11.822905   15.000000
+25   2011-01-28     3.069429  65.579933  12.497912   38.000000
+26   2011-01-29     2.694496  62.056845  14.017077   39.333333
+27   2011-01-30     2.319563  58.533757  15.536242   40.666667
+28   2011-01-31     1.944630  55.010668  17.055406   42.000000
+29   2011-02-01     2.507948  67.619156   7.498521   47.000000
+..          ...          ...        ...        ...         ...
+699  2012-12-02    12.886051  61.959077   9.026754  490.666667
+700  2012-12-03    15.438592  64.153728   9.603348  555.000000
+701  2012-12-04    16.597565  62.269280  16.123607  551.000000
+702  2012-12-05    14.734904  48.380206  26.815586  331.000000
+703  2012-12-06     5.669952  49.706298  16.168189  340.000000
+704  2012-12-07     8.898565  63.967628  13.018630  349.000000
+705  2012-12-08    10.802619  66.961024  14.438311  342.333333
+706  2012-12-09    12.706673  69.954419  15.857993  335.666667
+707  2012-12-10    14.610726  72.947815  17.277674  329.000000
+708  2012-12-11    10.512872  54.615186  24.819453  282.000000
+709  2012-12-12     7.739593  51.358079  15.325268  310.000000
+710  2012-12-13     7.656791  48.426717  16.123607  425.000000
+711  2012-12-14     6.953152  57.197576  13.063497  429.000000
+712  2012-12-15     8.802005  62.114188  12.279551  356.666667
+713  2012-12-16    10.650858  67.030799  11.495604  284.333333
+714  2012-12-17    12.499710  71.947411  10.711657  212.000000
+715  2012-12-18    13.368952  58.500386  19.495790  433.000000
+716  2012-12-19     9.478076  56.220456  16.834280  333.000000
+717  2012-12-20     9.353899  58.593463  13.151520  314.000000
+718  2012-12-21     9.188346  52.381767  30.407969  221.000000
+719  2012-12-22     7.609421  56.748790  23.342550  205.333333
+720  2012-12-23     6.030497  61.115812  16.277130  189.666667
+721  2012-12-24     4.451573  65.482835   9.211711  174.000000
+722  2012-12-25     4.750319  66.377012  17.747048   91.500000
+723  2012-12-26     5.049065  67.271190  26.282385    9.000000
+724  2012-12-27     5.587201  57.755931  28.678187  247.000000
+725  2012-12-28     5.545775  54.242931  14.792709  644.000000
+726  2012-12-29     4.924888  54.010283  14.777848  575.666667
+727  2012-12-30     4.304001  53.777635  14.762987  507.333333
+728  2012-12-31     3.683114  53.544987  14.748127  439.000000
+
+[729 rows x 5 columns]>
+In[68]: days = bikes.index
+In[69]: days
+Out[69]:
+Int64Index([  0,   1,   2,   3,   4,   5,   6,   7,   8,   9,
+            ...
+            719, 720, 721, 722, 723, 724, 725, 726, 727, 728],
+           dtype='int64', length=729)
+In[70]: bikes
+Out[70]:
+           date  temperature   humidity  windspeed       count
+0    2011-01-03     2.716070  45.715346  21.414957  120.000000
+1    2011-01-04     2.896673  54.267219  15.136882  108.000000
+2    2011-01-05     4.235654  45.697702  17.034578   82.000000
+3    2011-01-06     3.112643  50.237349  10.091568   88.000000
+4    2011-01-07     2.723918  49.144928  15.738204  148.000000
+5    2011-01-08     1.967445  48.851252  17.035029  112.333333
+6    2011-01-09     1.210973  48.557576  18.331855   76.666667
+7    2011-01-10     0.454501  48.263900  19.628680   41.000000
+8    2011-01-11     1.361393  59.623460  12.414597   43.000000
+9    2011-01-12     1.541997  54.775880  25.432188   25.000000
+10   2011-01-13     1.158189  47.565957  25.173470   38.000000
+11   2011-01-14     0.953048  51.329770  12.729596   54.000000
+12   2011-01-15     1.645921  55.850225  13.090300   42.750000
+13   2011-01-16     2.338794  60.370679  13.451004   31.500000
+14   2011-01-17     3.031667  64.891133  13.811708   20.250000
+15   2011-01-18     3.724539  69.411587  14.172412    9.000000
+16   2011-01-19     7.475045  62.715350  18.562278   78.000000
+17   2011-01-20     5.959733  51.358079  17.676844   83.000000
+18   2011-01-21     1.779077  46.821447  28.899955   75.000000
+19   2011-01-22     0.452718  47.466458  24.265518   78.666667
+20   2011-01-23    -0.873641  48.111470  19.631082   82.333333
+21   2011-01-24    -2.200000  48.756481  14.996645   86.000000
+22   2011-01-25     4.062848  55.748088  12.961280  186.000000
+23   2011-01-26     3.765915  69.458098  24.663452   34.000000
+24   2011-01-27     2.648318  59.686889  11.822905   15.000000
+25   2011-01-28     3.069429  65.579933  12.497912   38.000000
+26   2011-01-29     2.694496  62.056845  14.017077   39.333333
+27   2011-01-30     2.319563  58.533757  15.536242   40.666667
+28   2011-01-31     1.944630  55.010668  17.055406   42.000000
+29   2011-02-01     2.507948  67.619156   7.498521   47.000000
+..          ...          ...        ...        ...         ...
+699  2012-12-02    12.886051  61.959077   9.026754  490.666667
+700  2012-12-03    15.438592  64.153728   9.603348  555.000000
+701  2012-12-04    16.597565  62.269280  16.123607  551.000000
+702  2012-12-05    14.734904  48.380206  26.815586  331.000000
+703  2012-12-06     5.669952  49.706298  16.168189  340.000000
+704  2012-12-07     8.898565  63.967628  13.018630  349.000000
+705  2012-12-08    10.802619  66.961024  14.438311  342.333333
+706  2012-12-09    12.706673  69.954419  15.857993  335.666667
+707  2012-12-10    14.610726  72.947815  17.277674  329.000000
+708  2012-12-11    10.512872  54.615186  24.819453  282.000000
+709  2012-12-12     7.739593  51.358079  15.325268  310.000000
+710  2012-12-13     7.656791  48.426717  16.123607  425.000000
+711  2012-12-14     6.953152  57.197576  13.063497  429.000000
+712  2012-12-15     8.802005  62.114188  12.279551  356.666667
+713  2012-12-16    10.650858  67.030799  11.495604  284.333333
+714  2012-12-17    12.499710  71.947411  10.711657  212.000000
+715  2012-12-18    13.368952  58.500386  19.495790  433.000000
+716  2012-12-19     9.478076  56.220456  16.834280  333.000000
+717  2012-12-20     9.353899  58.593463  13.151520  314.000000
+718  2012-12-21     9.188346  52.381767  30.407969  221.000000
+719  2012-12-22     7.609421  56.748790  23.342550  205.333333
+720  2012-12-23     6.030497  61.115812  16.277130  189.666667
+721  2012-12-24     4.451573  65.482835   9.211711  174.000000
+722  2012-12-25     4.750319  66.377012  17.747048   91.500000
+723  2012-12-26     5.049065  67.271190  26.282385    9.000000
+724  2012-12-27     5.587201  57.755931  28.678187  247.000000
+725  2012-12-28     5.545775  54.242931  14.792709  644.000000
+726  2012-12-29     4.924888  54.010283  14.777848  575.666667
+727  2012-12-30     4.304001  53.777635  14.762987  507.333333
+728  2012-12-31     3.683114  53.544987  14.748127  439.000000
+
+[729 rows x 5 columns]
+In[71]: bikes.head()
+Out[71]:
+         date  temperature   humidity  windspeed  count
+0  2011-01-03     2.716070  45.715346  21.414957    120
+1  2011-01-04     2.896673  54.267219  15.136882    108
+2  2011-01-05     4.235654  45.697702  17.034578     82
+3  2011-01-06     3.112643  50.237349  10.091568     88
+4  2011-01-07     2.723918  49.144928  15.738204    148
+In[72]: plt.plot(days,bikes['count'].values)
+Out[72]: [<matplotlib.lines.Line2D at 0x111ef0b90>]
+In[73]: plt.xlabel('time')
+Out[73]: <matplotlib.text.Text at 0x117a43c10>
+In[74]: bikes
+Out[74]:
+           date  temperature   humidity  windspeed       count
+0    2011-01-03     2.716070  45.715346  21.414957  120.000000
+1    2011-01-04     2.896673  54.267219  15.136882  108.000000
+2    2011-01-05     4.235654  45.697702  17.034578   82.000000
+3    2011-01-06     3.112643  50.237349  10.091568   88.000000
+4    2011-01-07     2.723918  49.144928  15.738204  148.000000
+5    2011-01-08     1.967445  48.851252  17.035029  112.333333
+6    2011-01-09     1.210973  48.557576  18.331855   76.666667
+7    2011-01-10     0.454501  48.263900  19.628680   41.000000
+8    2011-01-11     1.361393  59.623460  12.414597   43.000000
+9    2011-01-12     1.541997  54.775880  25.432188   25.000000
+10   2011-01-13     1.158189  47.565957  25.173470   38.000000
+11   2011-01-14     0.953048  51.329770  12.729596   54.000000
+12   2011-01-15     1.645921  55.850225  13.090300   42.750000
+13   2011-01-16     2.338794  60.370679  13.451004   31.500000
+14   2011-01-17     3.031667  64.891133  13.811708   20.250000
+15   2011-01-18     3.724539  69.411587  14.172412    9.000000
+16   2011-01-19     7.475045  62.715350  18.562278   78.000000
+17   2011-01-20     5.959733  51.358079  17.676844   83.000000
+18   2011-01-21     1.779077  46.821447  28.899955   75.000000
+19   2011-01-22     0.452718  47.466458  24.265518   78.666667
+20   2011-01-23    -0.873641  48.111470  19.631082   82.333333
+21   2011-01-24    -2.200000  48.756481  14.996645   86.000000
+22   2011-01-25     4.062848  55.748088  12.961280  186.000000
+23   2011-01-26     3.765915  69.458098  24.663452   34.000000
+24   2011-01-27     2.648318  59.686889  11.822905   15.000000
+25   2011-01-28     3.069429  65.579933  12.497912   38.000000
+26   2011-01-29     2.694496  62.056845  14.017077   39.333333
+27   2011-01-30     2.319563  58.533757  15.536242   40.666667
+28   2011-01-31     1.944630  55.010668  17.055406   42.000000
+29   2011-02-01     2.507948  67.619156   7.498521   47.000000
+..          ...          ...        ...        ...         ...
+699  2012-12-02    12.886051  61.959077   9.026754  490.666667
+700  2012-12-03    15.438592  64.153728   9.603348  555.000000
+701  2012-12-04    16.597565  62.269280  16.123607  551.000000
+702  2012-12-05    14.734904  48.380206  26.815586  331.000000
+703  2012-12-06     5.669952  49.706298  16.168189  340.000000
+704  2012-12-07     8.898565  63.967628  13.018630  349.000000
+705  2012-12-08    10.802619  66.961024  14.438311  342.333333
+706  2012-12-09    12.706673  69.954419  15.857993  335.666667
+707  2012-12-10    14.610726  72.947815  17.277674  329.000000
+708  2012-12-11    10.512872  54.615186  24.819453  282.000000
+709  2012-12-12     7.739593  51.358079  15.325268  310.000000
+710  2012-12-13     7.656791  48.426717  16.123607  425.000000
+711  2012-12-14     6.953152  57.197576  13.063497  429.000000
+712  2012-12-15     8.802005  62.114188  12.279551  356.666667
+713  2012-12-16    10.650858  67.030799  11.495604  284.333333
+714  2012-12-17    12.499710  71.947411  10.711657  212.000000
+715  2012-12-18    13.368952  58.500386  19.495790  433.000000
+716  2012-12-19     9.478076  56.220456  16.834280  333.000000
+717  2012-12-20     9.353899  58.593463  13.151520  314.000000
+718  2012-12-21     9.188346  52.381767  30.407969  221.000000
+719  2012-12-22     7.609421  56.748790  23.342550  205.333333
+720  2012-12-23     6.030497  61.115812  16.277130  189.666667
+721  2012-12-24     4.451573  65.482835   9.211711  174.000000
+722  2012-12-25     4.750319  66.377012  17.747048   91.500000
+723  2012-12-26     5.049065  67.271190  26.282385    9.000000
+724  2012-12-27     5.587201  57.755931  28.678187  247.000000
+725  2012-12-28     5.545775  54.242931  14.792709  644.000000
+726  2012-12-29     4.924888  54.010283  14.777848  575.666667
+727  2012-12-30     4.304001  53.777635  14.762987  507.333333
+728  2012-12-31     3.683114  53.544987  14.748127  439.000000
+
+[729 rows x 5 columns]
+In[75]: bikes.head()
+Out[75]:
+         date  temperature   humidity  windspeed  count
+0  2011-01-03     2.716070  45.715346  21.414957    120
+1  2011-01-04     2.896673  54.267219  15.136882    108
+2  2011-01-05     4.235654  45.697702  17.034578     82
+3  2011-01-06     3.112643  50.237349  10.091568     88
+4  2011-01-07     2.723918  49.144928  15.738204    148
+In[76]: days = bikes.date
+In[77]: plt.plot(days,bikes['count'].values)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/IPython/core/interactiveshell.py", line 2883, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-77-70eac25d1030>", line 1, in <module>
+    plt.plot(days,bikes['count'].values)
+  File "/usr/local/lib/python2.7/site-packages/matplotlib/pyplot.py", line 2987, in plot
+    ret = ax.plot(*args, **kwargs)
+  File "/usr/local/lib/python2.7/site-packages/matplotlib/axes.py", line 4138, in plot
+    self.add_line(line)
+  File "/usr/local/lib/python2.7/site-packages/matplotlib/axes.py", line 1497, in add_line
+    self._update_line_limits(line)
+  File "/usr/local/lib/python2.7/site-packages/matplotlib/axes.py", line 1508, in _update_line_limits
+    path = line.get_path()
+  File "/usr/local/lib/python2.7/site-packages/matplotlib/lines.py", line 743, in get_path
+    self.recache()
+  File "/usr/local/lib/python2.7/site-packages/matplotlib/lines.py", line 420, in recache
+    x = np.asarray(xconv, np.float_)
+  File "/usr/local/lib/python2.7/site-packages/numpy/core/numeric.py", line 462, in asarray
+    return array(a, dtype, copy=False, order=order)
+ValueError: invalid literal for float(): 2012-12-31
+In[78]: bikes = pd.read_csv("data/bikes_broken.csv")
+In[79]: bikes.head()
+Out[79]:
+   temperature   humidity  windspeed  count
+0    16.190237  72.110283  13.550333    NaN
+1     9.850609  60.570933  11.288848    362
+2    18.294673  46.821447        NaN    878
+3    28.766952  54.126625  18.519194   1017
+4     1.361393  59.623460  12.414597     73
+In[80]: bikes.mean()
+Out[80]:
+temperature     14.657033
+humidity        56.977417
+windspeed       13.798225
+count          544.875000
+dtype: float64
+In[81]: bikes.values.mean()
+Out[81]: nan
+In[82]: plt.close()
+In[83]: bikes.head()
+Out[83]:
+   temperature   humidity  windspeed  count
+0    16.190237  72.110283  13.550333    NaN
+1     9.850609  60.570933  11.288848    362
+2    18.294673  46.821447        NaN    878
+3    28.766952  54.126625  18.519194   1017
+4     1.361393  59.623460  12.414597     73
+In[84]: bikes.temperature
+Out[84]:
+0    16.190237
+1     9.850609
+2    18.294673
+3    28.766952
+4     1.361393
+5    31.871387
+6     4.800710
+7          NaN
+8    12.913564
+9     7.863770
+Name: temperature, dtype: float64
+In[85]: from sklearn.preprocessing import Imputer
+In[86]: imputer = Imputer()
+In[87]: help(imputer)
+Help on Imputer in module sklearn.preprocessing.imputation object:
+
+class Imputer(sklearn.base.BaseEstimator, sklearn.base.TransformerMixin)
+ |  Imputation transformer for completing missing values.
+ |
+ |  Parameters
+ |  ----------
+ |  missing_values : integer or "NaN", optional (default="NaN")
+ |      The placeholder for the missing values. All occurrences of
+ |      `missing_values` will be imputed. For missing values encoded as np.nan,
+ |      use the string value "NaN".
+ |
+ |  strategy : string, optional (default="mean")
+ |      The imputation strategy.
+ |
+ |      - If "mean", then replace missing values using the mean along
+ |        the axis.
+ |      - If "median", then replace missing values using the median along
+ |        the axis.
+ |      - If "most_frequent", then replace missing using the most frequent
+ |        value along the axis.
+ |
+ |  axis : integer, optional (default=0)
+ |      The axis along which to impute.
+ |
+ |      - If `axis=0`, then impute along columns.
+ |      - If `axis=1`, then impute along rows.
+ |
+ |  verbose : integer, optional (default=0)
+ |      Controls the verbosity of the imputer.
+ |
+ |  copy : boolean, optional (default=True)
+ |      If True, a copy of X will be created. If False, imputation will
+ |      be done in-place whenever possible. Note that, in the following cases,
+ |      a new copy will always be made, even if `copy=False`:
+ |
+ |      - If X is not an array of floating values;
+ |      - If X is sparse and `missing_values=0`;
+ |      - If `axis=0` and X is encoded as a CSR matrix;
+ |      - If `axis=1` and X is encoded as a CSC matrix.
+ |
+ |  Attributes
+ |  ----------
+ |  statistics_ : array of shape (n_features,)
+ |      The imputation fill value for each feature if axis == 0.
+ |
+ |  Notes
+ |  -----
+ |  - When ``axis=0``, columns which only contained missing values at `fit`
+ |    are discarded upon `transform`.
+ |  - When ``axis=1``, an exception is raised if there are rows for which it is
+ |    not possible to fill in the missing values (e.g., because they only
+ |    contain missing values).
+ |
+ |  Method resolution order:
+ |      Imputer
+ |      sklearn.base.BaseEstimator
+ |      sklearn.base.TransformerMixin
+ |      __builtin__.object
+ |
+ |  Methods defined here:
+ |
+ |  __init__(self, missing_values='NaN', strategy='mean', axis=0, verbose=0, copy=True)
+ |
+ |  fit(self, X, y=None)
+ |      Fit the imputer on X.
+ |
+ |      Parameters
+ |      ----------
+ |      X : {array-like, sparse matrix}, shape (n_samples, n_features)
+ |          Input data, where ``n_samples`` is the number of samples and
+ |          ``n_features`` is the number of features.
+ |
+ |      Returns
+ |      -------
+ |      self : object
+ |          Returns self.
+ |
+ |  transform(self, X)
+ |      Impute all missing values in X.
+ |
+ |      Parameters
+ |      ----------
+ |      X : {array-like, sparse matrix}, shape = [n_samples, n_features]
+ |          The input data to complete.
+ |
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from sklearn.base.BaseEstimator:
+ |
+ |  __repr__(self)
+ |
+ |  get_params(self, deep=True)
+ |      Get parameters for this estimator.
+ |
+ |      Parameters
+ |      ----------
+ |      deep: boolean, optional
+ |          If True, will return the parameters for this estimator and
+ |          contained subobjects that are estimators.
+ |
+ |      Returns
+ |      -------
+ |      params : mapping of string to any
+ |          Parameter names mapped to their values.
+ |
+ |  set_params(self, **params)
+ |      Set the parameters of this estimator.
+ |
+ |      The method works on simple estimators as well as on nested objects
+ |      (such as pipelines). The former have parameters of the form
+ |      ``<component>__<parameter>`` so that it's possible to update each
+ |      component of a nested object.
+ |
+ |      Returns
+ |      -------
+ |      self
+ |
+ |  ----------------------------------------------------------------------
+ |  Data descriptors inherited from sklearn.base.BaseEstimator:
+ |
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ |
+ |  ----------------------------------------------------------------------
+ |  Methods inherited from sklearn.base.TransformerMixin:
+ |
+ |  fit_transform(self, X, y=None, **fit_params)
+ |      Fit to data, then transform it.
+ |
+ |      Fits transformer to X and y with optional parameters fit_params
+ |      and returns a transformed version of X.
+ |
+ |      Parameters
+ |      ----------
+ |      X : numpy array of shape [n_samples, n_features]
+ |          Training set.
+ |
+ |      y : numpy array of shape [n_samples]
+ |          Target values.
+ |
+ |      Returns
+ |      -------
+ |      X_new : numpy array of shape [n_samples, n_features_new]
+ |          Transformed array.
+
+In[88]: imputer?
+Type:        Imputer
+String form: Imputer(axis=0, copy=True, missing_values='NaN', strategy='mean', verbose=0)
+File:        /usr/local/lib/python2.7/site-packages/sklearn/preprocessing/imputation.py
+Docstring:
+Imputation transformer for completing missing values.
+
+Parameters
+----------
+missing_values : integer or "NaN", optional (default="NaN")
+    The placeholder for the missing values. All occurrences of
+    `missing_values` will be imputed. For missing values encoded as np.nan,
+    use the string value "NaN".
+
+strategy : string, optional (default="mean")
+    The imputation strategy.
+
+    - If "mean", then replace missing values using the mean along
+      the axis.
+    - If "median", then replace missing values using the median along
+      the axis.
+    - If "most_frequent", then replace missing using the most frequent
+      value along the axis.
+
+axis : integer, optional (default=0)
+    The axis along which to impute.
+
+    - If `axis=0`, then impute along columns.
+    - If `axis=1`, then impute along rows.
+
+verbose : integer, optional (default=0)
+    Controls the verbosity of the imputer.
+
+copy : boolean, optional (default=True)
+    If True, a copy of X will be created. If False, imputation will
+    be done in-place whenever possible. Note that, in the following cases,
+    a new copy will always be made, even if `copy=False`:
+
+    - If X is not an array of floating values;
+    - If X is sparse and `missing_values=0`;
+    - If `axis=0` and X is encoded as a CSR matrix;
+    - If `axis=1` and X is encoded as a CSC matrix.
+
+Attributes
+----------
+statistics_ : array of shape (n_features,)
+    The imputation fill value for each feature if axis == 0.
+
+Notes
+-----
+- When ``axis=0``, columns which only contained missing values at `fit`
+  are discarded upon `transform`.
+- When ``axis=1``, an exception is raised if there are rows for which it is
+  not possible to fill in the missing values (e.g., because they only
+  contain missing values).
+In[89]: imputer.fit(bikes)
+Out[89]: Imputer(axis=0, copy=True, missing_values='NaN', strategy='mean', verbose=0)
+In[90]: imputer.transform(bikes)
+Out[90]:
+array([[   16.1902375 ,    72.11028278,    13.55033291,   544.875     ],
+       [    9.8506086 ,    60.57093254,    11.28884792,   362.        ],
+       [   18.2946729 ,    46.82144668,    13.79822475,   878.        ],
+       [   28.76695178,    54.1266253 ,    18.51919432,  1017.        ],
+       [    1.36139339,    59.62346036,    12.41459723,    73.        ],
+       [   31.87138718,    48.72917738,    18.38630426,   771.        ],
+       [    4.80071045,    56.97741717,     8.22873861,   143.        ],
+       [   14.6570329 ,    61.08277635,    13.81782498,   651.        ],
+       [   12.91356436,    52.32509368,    11.94309787,   464.        ],
+       [    7.86376994,    57.40695949,    16.03508461,   544.875     ]])
+In[91]: imputer.fit(bikes,strategy="most_frequent")
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/IPython/core/interactiveshell.py", line 2883, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-91-b82c0dde2f64>", line 1, in <module>
+    imputer.fit(bikes,strategy="most_frequent")
+TypeError: fit() got an unexpected keyword argument 'strategy'
+In[92]: imputer.strategy = "most_frequent"
+In[93]: imputer.transform(bikes)
+Out[93]:
+array([[   16.1902375 ,    72.11028278,    13.55033291,   544.875     ],
+       [    9.8506086 ,    60.57093254,    11.28884792,   362.        ],
+       [   18.2946729 ,    46.82144668,    13.79822475,   878.        ],
+       [   28.76695178,    54.1266253 ,    18.51919432,  1017.        ],
+       [    1.36139339,    59.62346036,    12.41459723,    73.        ],
+       [   31.87138718,    48.72917738,    18.38630426,   771.        ],
+       [    4.80071045,    56.97741717,     8.22873861,   143.        ],
+       [   14.6570329 ,    61.08277635,    13.81782498,   651.        ],
+       [   12.91356436,    52.32509368,    11.94309787,   464.        ],
+       [    7.86376994,    57.40695949,    16.03508461,   544.875     ]])
+In[94]: imputer
+Out[94]:
+Imputer(axis=0, copy=True, missing_values='NaN', strategy='most_frequent',
+    verbose=0)
+In[95]: imputer = Imputer(strategy="most_frequent")
+In[96]: imputer.fit(bikes)
+Out[96]:
+Imputer(axis=0, copy=True, missing_values='NaN', strategy='most_frequent',
+    verbose=0)
+In[97]:
+In[97]: imputer.transform(bikes)
+Out[97]:
+array([[   16.1902375 ,    72.11028278,    13.55033291,    73.        ],
+       [    9.8506086 ,    60.57093254,    11.28884792,   362.        ],
+       [   18.2946729 ,    46.82144668,     8.22873861,   878.        ],
+       [   28.76695178,    54.1266253 ,    18.51919432,  1017.        ],
+       [    1.36139339,    59.62346036,    12.41459723,    73.        ],
+       [   31.87138718,    48.72917738,    18.38630426,   771.        ],
+       [    4.80071045,    46.82144668,     8.22873861,   143.        ],
+       [    1.36139339,    61.08277635,    13.81782498,   651.        ],
+       [   12.91356436,    52.32509368,    11.94309787,   464.        ],
+       [    7.86376994,    57.40695949,    16.03508461,    73.        ]])
+In[98]: from sklearn.preprocessing import MinMaxScaler
+In[99]: scaler = MinMaxScaler()
+In[100]: scaler.fit(X)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/IPython/core/interactiveshell.py", line 2883, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-100-4db6f243a12c>", line 1, in <module>
+    scaler.fit(X)
+NameError: name 'X' is not defined
+In[101]: scaler.transform(X)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/IPython/core/interactiveshell.py", line 2883, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-101-3a12e573fbed>", line 1, in <module>
+    scaler.transform(X)
+NameError: name 'X' is not defined
+In[102]: imputer.transform(bikes)
+Out[102]:
+array([[   16.1902375 ,    72.11028278,    13.55033291,    73.        ],
+       [    9.8506086 ,    60.57093254,    11.28884792,   362.        ],
+       [   18.2946729 ,    46.82144668,     8.22873861,   878.        ],
+       [   28.76695178,    54.1266253 ,    18.51919432,  1017.        ],
+       [    1.36139339,    59.62346036,    12.41459723,    73.        ],
+       [   31.87138718,    48.72917738,    18.38630426,   771.        ],
+       [    4.80071045,    46.82144668,     8.22873861,   143.        ],
+       [    1.36139339,    61.08277635,    13.81782498,   651.        ],
+       [   12.91356436,    52.32509368,    11.94309787,   464.        ],
+       [    7.86376994,    57.40695949,    16.03508461,    73.        ]])
+In[103]: X = imputer.transform(bikes)
+In[104]: scaler.transform(X)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/IPython/core/interactiveshell.py", line 2883, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-104-3a12e573fbed>", line 1, in <module>
+    scaler.transform(X)
+  File "/usr/local/lib/python2.7/site-packages/sklearn/preprocessing/data.py", line 253, in transform
+    check_is_fitted(self, 'scale_')
+  File "/usr/local/lib/python2.7/site-packages/sklearn/utils/validation.py", line 627, in check_is_fitted
+    raise NotFittedError(msg % {'name': type(estimator).__name__})
+NotFittedError: This MinMaxScaler instance is not fitted yet. Call 'fit' with appropriate arguments before using this method.
+In[105]: X_ok = imputer.transform(bikes)
+In[106]: scaler.fit(X_ok)
+Out[106]: MinMaxScaler(copy=True, feature_range=(0, 1))
+In[107]: scaler.transform(X_ok)
+Out[107]:
+array([[ 0.48603235,  1.        ,  0.51713884,  0.        ],
+       [ 0.27824375,  0.54369785,  0.29737355,  0.30614407],
+       [ 0.55500764,  0.        ,  0.        ,  0.85275424],
+       [ 0.89824857,  0.2888697 ,  1.        ,  1.        ],
+       [ 0.        ,  0.50623183,  0.40677097,  0.        ],
+       [ 1.        ,  0.07543766,  0.98708609,  0.73940678],
+       [ 0.11272756,  0.        ,  0.        ,  0.07415254],
+       [ 0.        ,  0.56393776,  0.54313303,  0.61228814],
+       [ 0.37863564,  0.21763149,  0.36095187,  0.41419492],
+       [ 0.21312284,  0.41858442,  0.75860061,  0.        ]])
+In[108]: X_scaled = scaler.transform(X_ok)
+In[109]: X_scaled
+Out[109]:
+array([[ 0.48603235,  1.        ,  0.51713884,  0.        ],
+       [ 0.27824375,  0.54369785,  0.29737355,  0.30614407],
+       [ 0.55500764,  0.        ,  0.        ,  0.85275424],
+       [ 0.89824857,  0.2888697 ,  1.        ,  1.        ],
+       [ 0.        ,  0.50623183,  0.40677097,  0.        ],
+       [ 1.        ,  0.07543766,  0.98708609,  0.73940678],
+       [ 0.11272756,  0.        ,  0.        ,  0.07415254],
+       [ 0.        ,  0.56393776,  0.54313303,  0.61228814],
+       [ 0.37863564,  0.21763149,  0.36095187,  0.41419492],
+       [ 0.21312284,  0.41858442,  0.75860061,  0.        ]])
+In[110]: bikes
+Out[110]:
+   temperature   humidity  windspeed  count
+0    16.190237  72.110283  13.550333    NaN
+1     9.850609  60.570933  11.288848    362
+2    18.294673  46.821447        NaN    878
+3    28.766952  54.126625  18.519194   1017
+4     1.361393  59.623460  12.414597     73
+5    31.871387  48.729177  18.386304    771
+6     4.800710        NaN   8.228739    143
+7          NaN  61.082776  13.817825    651
+8    12.913564  52.325094  11.943098    464
+9     7.863770  57.406959  16.035085    NaN
+In[111]: import numpy as np
+In[112]: np.power?
+Type:            ufunc
+String form:     <ufunc 'power'>
+File:            /usr/local/lib/python2.7/site-packages/numpy/__init__.py
+Docstring:
+power(x1, x2[, out])
+
+First array elements raised to powers from second array, element-wise.
+
+Raise each base in `x1` to the positionally-corresponding power in
+`x2`.  `x1` and `x2` must be broadcastable to the same shape.
+
+Parameters
+----------
+x1 : array_like
+    The bases.
+x2 : array_like
+    The exponents.
+
+Returns
+-------
+y : ndarray
+    The bases in `x1` raised to the exponents in `x2`.
+
+Examples
+--------
+Cube each element in a list.
+
+x1 = range(6)
+x1
+[0, 1, 2, 3, 4, 5]
+np.power(x1, 3)
+array([  0,   1,   8,  27,  64, 125])
+
+Raise the bases to different exponents.
+
+x2 = [1.0, 2.0, 3.0, 3.0, 2.0, 1.0]
+np.power(x1, x2)
+array([  0.,   1.,   8.,  27.,  16.,   5.])
+
+The effect of broadcasting.
+
+x2 = np.array([[1, 2, 3, 3, 2, 1], [1, 2, 3, 3, 2, 1]])
+x2
+array([[1, 2, 3, 3, 2, 1],
+       [1, 2, 3, 3, 2, 1]])
+np.power(x1, x2)
+array([[ 0,  1,  8, 27, 16,  5],
+       [ 0,  1,  8, 27, 16,  5]])
+Class docstring:
+Functions that operate element by element on whole arrays.
+
+To see the documentation for a specific ufunc, use np.info().  For
+example, np.info(np.sin).  Because ufuncs are written in C
+(for speed) and linked into Python with NumPy's ufunc facility,
+Python's help() function finds this page whenever help() is called
+on a ufunc.
+
+A detailed explanation of ufuncs can be found in the "ufuncs.rst"
+file in the NumPy reference guide.
+
+Unary ufuncs:
+=============
+
+op(X, out=None)
+Apply op to X elementwise
+
+Parameters
+----------
+X : array_like
+    Input array.
+out : array_like
+    An array to store the output. Must be the same shape as `X`.
+
+Returns
+-------
+r : array_like
+    `r` will have the same shape as `X`; if out is provided, `r`
+    will be equal to out.
+
+Binary ufuncs:
+==============
+
+op(X, Y, out=None)
+Apply `op` to `X` and `Y` elementwise. May "broadcast" to make
+the shapes of `X` and `Y` congruent.
+
+The broadcasting rules are:
+
+* Dimensions of length 1 may be prepended to either array.
+* Arrays may be repeated along dimensions of length 1.
+
+Parameters
+----------
+X : array_like
+    First input array.
+Y : array_like
+    Second input array.
+out : array_like
+    An array to store the output. Must be the same shape as the
+    output would have.
+
+Returns
+-------
+r : array_like
+    The return value; if out is provided, `r` will be equal to out.
+>>> plt.close()
+In[114]:
+In[114]:
+In[114]:
+In[114]: bikes = pd.read_csv("data/bikes.csv")
+In[115]: bikes = pd.read_csv("data/bikes.csv",parse_date="date")
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/IPython/core/interactiveshell.py", line 2883, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-115-38c841b5f925>", line 1, in <module>
+    bikes = pd.read_csv("data/bikes.csv",parse_date="date")
+TypeError: parser_f() got an unexpected keyword argument 'parse_date'
+In[116]: bikes = pd.read_csv?
+Type:        function
+String form: <function read_csv at 0x10e916488>
+File:        /usr/local/lib/python2.7/site-packages/pandas/io/parsers.py
+Definition:  pd.read_csv(filepath_or_buffer, sep=',', dialect=None, compression='infer', doublequote=True, escapechar=None, quotechar='"', quoting=0, skipinitialspace=False, lineterminator=None, header='infer', index_col=None, names=None, prefix=None, skiprows=None, skipfooter=None, skip_footer=0, na_values=None, na_fvalues=None, true_values=None, false_values=None, delimiter=None, converters=None, dtype=None, usecols=None, engine=None, delim_whitespace=False, as_recarray=False, na_filter=True, compact_ints=False, use_unsigned=False, low_memory=True, buffer_lines=None, warn_bad_lines=True, error_bad_lines=True, keep_default_na=True, thousands=None, comment=None, decimal='.', parse_dates=False, keep_date_col=False, dayfirst=False, date_parser=None, memory_map=False, float_precision=None, nrows=None, iterator=False, chunksize=None, verbose=False, encoding=None, squeeze=False, mangle_dupe_cols=True, tupleize_cols=False, infer_datetime_format=False, skip_blank_lines=True)
+Docstring:
+Read CSV (comma-separated) file into DataFrame
+
+Also supports optionally iterating or breaking of the file
+into chunks.
+
+Parameters
+----------
+filepath_or_buffer : string or file handle / StringIO
+    The string could be a URL. Valid URL schemes include
+    http, ftp, s3, and file. For file URLs, a
+    host is expected. For instance, a local file could be
+    file ://localhost/path/to/table.csv
+sep : string, default ','
+    Delimiter to use. If sep is None, will try to automatically determine
+    this. Regular expressions are accepted.
+engine : {'c', 'python'}
+    Parser engine to use. The C engine is faster while the python engine is
+    currently more feature-complete.
+lineterminator : string (length 1), default None
+    Character to break file into lines. Only valid with C parser
+quotechar : string (length 1)
+    The character used to denote the start and end of a quoted item. Quoted
+    items can include the delimiter and it will be ignored.
+quoting : int or csv.QUOTE_* instance, default None
+    Control field quoting behavior per ``csv.QUOTE_*`` constants. Use one of
+    QUOTE_MINIMAL (0), QUOTE_ALL (1), QUOTE_NONNUMERIC (2) or QUOTE_NONE (3).
+    Default (None) results in QUOTE_MINIMAL behavior.
+skipinitialspace : boolean, default False
+    Skip spaces after delimiter
+escapechar : string (length 1), default None
+    One-character string used to escape delimiter when quoting is QUOTE_NONE.
+dtype : Type name or dict of column -> type
+    Data type for data or columns. E.g. {'a': np.float64, 'b': np.int32}
+    (Unsupported with engine='python')
+compression : {'gzip', 'bz2', 'infer', None}, default 'infer'
+    For on-the-fly decompression of on-disk data. If 'infer', then use gzip or
+    bz2 if filepath_or_buffer is a string ending in '.gz' or '.bz2',
+    respectively, and no decompression otherwise. Set to None for no
+    decompression.
+dialect : string or csv.Dialect instance, default None
+    If None defaults to Excel dialect. Ignored if sep longer than 1 char
+    See csv.Dialect documentation for more details
+header : int, list of ints
+    Row number(s) to use as the column names, and the start of the
+    data.  Defaults to 0 if no ``names`` passed, otherwise ``None``. Explicitly
+    pass ``header=0`` to be able to replace existing names. The header can be
+    a list of integers that specify row locations for a multi-index on the
+    columns E.g. [0,1,3]. Intervening rows that are not specified will be
+    skipped (e.g. 2 in this example are skipped). Note that this parameter
+    ignores commented lines and empty lines if ``skip_blank_lines=True``, so header=0
+    denotes the first line of data rather than the first line of the file.
+skiprows : list-like or integer
+    Line numbers to skip (0-indexed) or number of lines to skip (int)
+    at the start of the file
+index_col : int or sequence or False, default None
+    Column to use as the row labels of the DataFrame. If a sequence is given, a
+    MultiIndex is used. If you have a malformed file with delimiters at the end
+    of each line, you might consider index_col=False to force pandas to _not_
+    use the first column as the index (row names)
+names : array-like
+    List of column names to use. If file contains no header row, then you
+    should explicitly pass header=None
+prefix : string, default None
+    Prefix to add to column numbers when no header, e.g 'X' for X0, X1, ...
+na_values : list-like or dict, default None
+    Additional strings to recognize as NA/NaN. If dict passed, specific
+    per-column NA values
+true_values : list
+    Values to consider as True
+false_values : list
+    Values to consider as False
+keep_default_na : bool, default True
+    If na_values are specified and keep_default_na is False the default NaN
+    values are overridden, otherwise they're appended to
+parse_dates : boolean, list of ints or names, list of lists, or dict
+    If True -> try parsing the index.
+    If [1, 2, 3] -> try parsing columns 1, 2, 3 each as a separate date column.
+    If [[1, 3]] -> combine columns 1 and 3 and parse as a single date column.
+    {'foo' : [1, 3]} -> parse columns 1, 3 as date and call result 'foo'
+    A fast-path exists for iso8601-formatted dates.
+keep_date_col : boolean, default False
+    If True and parse_dates specifies combining multiple columns then
+    keep the original columns.
+date_parser : function
+    Function to use for converting a sequence of string columns to an
+    array of datetime instances. The default uses dateutil.parser.parser
+    to do the conversion. Pandas will try to call date_parser in three different
+    ways, advancing to the next if an exception occurs: 1) Pass one or more arrays
+    (as defined by parse_dates) as arguments; 2) concatenate (row-wise) the string
+    values from the columns defined by parse_dates into a single array and pass
+    that; and 3) call date_parser once for each row using one or more strings
+    (corresponding to the columns defined by parse_dates) as arguments.
+dayfirst : boolean, default False
+    DD/MM format dates, international and European format
+thousands : str, default None
+    Thousands separator
+comment : str, default None
+    Indicates remainder of line should not be parsed. If found at the
+    beginning of a line, the line will be ignored altogether. This parameter
+    must be a single character. Like empty lines (as long as ``skip_blank_lines=True``),
+    fully commented lines are ignored by the parameter `header`
+    but not by `skiprows`. For example, if comment='#', parsing
+    '#empty\na,b,c\n1,2,3' with `header=0` will result in 'a,b,c' being
+    treated as the header.
+decimal : str, default '.'
+    Character to recognize as decimal point. E.g. use ',' for European data
+nrows : int, default None
+    Number of rows of file to read. Useful for reading pieces of large files
+iterator : boolean, default False
+    Return TextFileReader object
+chunksize : int, default None
+    Return TextFileReader object for iteration
+skipfooter : int, default 0
+    Number of lines at bottom of file to skip (Unsupported with engine='c')
+converters : dict, default None
+    Dict of functions for converting values in certain columns. Keys can either
+    be integers or column labels
+verbose : boolean, default False
+    Indicate number of NA values placed in non-numeric columns
+delimiter : string, default None
+    Alternative argument name for sep. Regular expressions are accepted.
+encoding : string, default None
+    Encoding to use for UTF when reading/writing (ex. 'utf-8'). `List of Python
+    standard encodings
+    <https://docs.python.org/3/library/codecs.html#standard-encodings>`_
+squeeze : boolean, default False
+    If the parsed data only contains one column then return a Series
+na_filter : boolean, default True
+    Detect missing value markers (empty strings and the value of na_values). In
+    data without any NAs, passing na_filter=False can improve the performance
+    of reading a large file
+usecols : array-like
+    Return a subset of the columns.
+    Results in much faster parsing time and lower memory usage.
+mangle_dupe_cols : boolean, default True
+    Duplicate columns will be specified as 'X.0'...'X.N', rather than 'X'...'X'
+tupleize_cols : boolean, default False
+    Leave a list of tuples on columns as is (default is to convert to
+    a Multi Index on the columns)
+error_bad_lines : boolean, default True
+    Lines with too many fields (e.g. a csv line with too many commas) will by
+    default cause an exception to be raised, and no DataFrame will be returned.
+    If False, then these "bad lines" will dropped from the DataFrame that is
+    returned. (Only valid with C parser)
+warn_bad_lines : boolean, default True
+    If error_bad_lines is False, and warn_bad_lines is True, a warning for each
+    "bad line" will be output. (Only valid with C parser).
+infer_datetime_format : boolean, default False
+    If True and parse_dates is enabled for a column, attempt to infer
+    the datetime format to speed up the processing
+skip_blank_lines : boolean, default True
+    If True, skip over blank lines rather than interpreting as NaN values
+
+Returns
+-------
+result : DataFrame or TextParser
+In[117]: bikes = pd.read_csv("data/bikes.csv",date_parser=date)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/IPython/core/interactiveshell.py", line 2883, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-117-6a2402133002>", line 1, in <module>
+    bikes = pd.read_csv("data/bikes.csv",date_parser=date)
+NameError: name 'date' is not defined
+In[118]:
+In[118]: bikes = pd.read_csv("data/bikes.csv",parse_date='date')
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/IPython/core/interactiveshell.py", line 2883, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-118-2a95db00df72>", line 1, in <module>
+    bikes = pd.read_csv("data/bikes.csv",parse_date='date')
+TypeError: parser_f() got an unexpected keyword argument 'parse_date'
+In[119]: bikes = pd.read_csv("data/bikes.csv",parse_date=date)
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/IPython/core/interactiveshell.py", line 2883, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-119-38df14689f93>", line 1, in <module>
+    bikes = pd.read_csv("data/bikes.csv",parse_date=date)
+NameError: name 'date' is not defined
+In[120]: bikes = pd.read_csv("data/bikes.csv",parse_date='date')
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/IPython/core/interactiveshell.py", line 2883, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-120-2a95db00df72>", line 1, in <module>
+    bikes = pd.read_csv("data/bikes.csv",parse_date='date')
+TypeError: parser_f() got an unexpected keyword argument 'parse_date'
+In[121]: bikes = pd.read_csv?
+Type:        function
+String form: <function read_csv at 0x10e916488>
+File:        /usr/local/lib/python2.7/site-packages/pandas/io/parsers.py
+Definition:  pd.read_csv(filepath_or_buffer, sep=',', dialect=None, compression='infer', doublequote=True, escapechar=None, quotechar='"', quoting=0, skipinitialspace=False, lineterminator=None, header='infer', index_col=None, names=None, prefix=None, skiprows=None, skipfooter=None, skip_footer=0, na_values=None, na_fvalues=None, true_values=None, false_values=None, delimiter=None, converters=None, dtype=None, usecols=None, engine=None, delim_whitespace=False, as_recarray=False, na_filter=True, compact_ints=False, use_unsigned=False, low_memory=True, buffer_lines=None, warn_bad_lines=True, error_bad_lines=True, keep_default_na=True, thousands=None, comment=None, decimal='.', parse_dates=False, keep_date_col=False, dayfirst=False, date_parser=None, memory_map=False, float_precision=None, nrows=None, iterator=False, chunksize=None, verbose=False, encoding=None, squeeze=False, mangle_dupe_cols=True, tupleize_cols=False, infer_datetime_format=False, skip_blank_lines=True)
+Docstring:
+Read CSV (comma-separated) file into DataFrame
+
+Also supports optionally iterating or breaking of the file
+into chunks.
+
+Parameters
+----------
+filepath_or_buffer : string or file handle / StringIO
+    The string could be a URL. Valid URL schemes include
+    http, ftp, s3, and file. For file URLs, a
+    host is expected. For instance, a local file could be
+    file ://localhost/path/to/table.csv
+sep : string, default ','
+    Delimiter to use. If sep is None, will try to automatically determine
+    this. Regular expressions are accepted.
+engine : {'c', 'python'}
+    Parser engine to use. The C engine is faster while the python engine is
+    currently more feature-complete.
+lineterminator : string (length 1), default None
+    Character to break file into lines. Only valid with C parser
+quotechar : string (length 1)
+    The character used to denote the start and end of a quoted item. Quoted
+    items can include the delimiter and it will be ignored.
+quoting : int or csv.QUOTE_* instance, default None
+    Control field quoting behavior per ``csv.QUOTE_*`` constants. Use one of
+    QUOTE_MINIMAL (0), QUOTE_ALL (1), QUOTE_NONNUMERIC (2) or QUOTE_NONE (3).
+    Default (None) results in QUOTE_MINIMAL behavior.
+skipinitialspace : boolean, default False
+    Skip spaces after delimiter
+escapechar : string (length 1), default None
+    One-character string used to escape delimiter when quoting is QUOTE_NONE.
+dtype : Type name or dict of column -> type
+    Data type for data or columns. E.g. {'a': np.float64, 'b': np.int32}
+    (Unsupported with engine='python')
+compression : {'gzip', 'bz2', 'infer', None}, default 'infer'
+    For on-the-fly decompression of on-disk data. If 'infer', then use gzip or
+    bz2 if filepath_or_buffer is a string ending in '.gz' or '.bz2',
+    respectively, and no decompression otherwise. Set to None for no
+    decompression.
+dialect : string or csv.Dialect instance, default None
+    If None defaults to Excel dialect. Ignored if sep longer than 1 char
+    See csv.Dialect documentation for more details
+header : int, list of ints
+    Row number(s) to use as the column names, and the start of the
+    data.  Defaults to 0 if no ``names`` passed, otherwise ``None``. Explicitly
+    pass ``header=0`` to be able to replace existing names. The header can be
+    a list of integers that specify row locations for a multi-index on the
+    columns E.g. [0,1,3]. Intervening rows that are not specified will be
+    skipped (e.g. 2 in this example are skipped). Note that this parameter
+    ignores commented lines and empty lines if ``skip_blank_lines=True``, so header=0
+    denotes the first line of data rather than the first line of the file.
+skiprows : list-like or integer
+    Line numbers to skip (0-indexed) or number of lines to skip (int)
+    at the start of the file
+index_col : int or sequence or False, default None
+    Column to use as the row labels of the DataFrame. If a sequence is given, a
+    MultiIndex is used. If you have a malformed file with delimiters at the end
+    of each line, you might consider index_col=False to force pandas to _not_
+    use the first column as the index (row names)
+names : array-like
+    List of column names to use. If file contains no header row, then you
+    should explicitly pass header=None
+prefix : string, default None
+    Prefix to add to column numbers when no header, e.g 'X' for X0, X1, ...
+na_values : list-like or dict, default None
+    Additional strings to recognize as NA/NaN. If dict passed, specific
+    per-column NA values
+true_values : list
+    Values to consider as True
+false_values : list
+    Values to consider as False
+keep_default_na : bool, default True
+    If na_values are specified and keep_default_na is False the default NaN
+    values are overridden, otherwise they're appended to
+parse_dates : boolean, list of ints or names, list of lists, or dict
+    If True -> try parsing the index.
+    If [1, 2, 3] -> try parsing columns 1, 2, 3 each as a separate date column.
+    If [[1, 3]] -> combine columns 1 and 3 and parse as a single date column.
+    {'foo' : [1, 3]} -> parse columns 1, 3 as date and call result 'foo'
+    A fast-path exists for iso8601-formatted dates.
+keep_date_col : boolean, default False
+    If True and parse_dates specifies combining multiple columns then
+    keep the original columns.
+date_parser : function
+    Function to use for converting a sequence of string columns to an
+    array of datetime instances. The default uses dateutil.parser.parser
+    to do the conversion. Pandas will try to call date_parser in three different
+    ways, advancing to the next if an exception occurs: 1) Pass one or more arrays
+    (as defined by parse_dates) as arguments; 2) concatenate (row-wise) the string
+    values from the columns defined by parse_dates into a single array and pass
+    that; and 3) call date_parser once for each row using one or more strings
+    (corresponding to the columns defined by parse_dates) as arguments.
+dayfirst : boolean, default False
+    DD/MM format dates, international and European format
+thousands : str, default None
+    Thousands separator
+comment : str, default None
+    Indicates remainder of line should not be parsed. If found at the
+    beginning of a line, the line will be ignored altogether. This parameter
+    must be a single character. Like empty lines (as long as ``skip_blank_lines=True``),
+    fully commented lines are ignored by the parameter `header`
+    but not by `skiprows`. For example, if comment='#', parsing
+    '#empty\na,b,c\n1,2,3' with `header=0` will result in 'a,b,c' being
+    treated as the header.
+decimal : str, default '.'
+    Character to recognize as decimal point. E.g. use ',' for European data
+nrows : int, default None
+    Number of rows of file to read. Useful for reading pieces of large files
+iterator : boolean, default False
+    Return TextFileReader object
+chunksize : int, default None
+    Return TextFileReader object for iteration
+skipfooter : int, default 0
+    Number of lines at bottom of file to skip (Unsupported with engine='c')
+converters : dict, default None
+    Dict of functions for converting values in certain columns. Keys can either
+    be integers or column labels
+verbose : boolean, default False
+    Indicate number of NA values placed in non-numeric columns
+delimiter : string, default None
+    Alternative argument name for sep. Regular expressions are accepted.
+encoding : string, default None
+    Encoding to use for UTF when reading/writing (ex. 'utf-8'). `List of Python
+    standard encodings
+    <https://docs.python.org/3/library/codecs.html#standard-encodings>`_
+squeeze : boolean, default False
+    If the parsed data only contains one column then return a Series
+na_filter : boolean, default True
+    Detect missing value markers (empty strings and the value of na_values). In
+    data without any NAs, passing na_filter=False can improve the performance
+    of reading a large file
+usecols : array-like
+    Return a subset of the columns.
+    Results in much faster parsing time and lower memory usage.
+mangle_dupe_cols : boolean, default True
+    Duplicate columns will be specified as 'X.0'...'X.N', rather than 'X'...'X'
+tupleize_cols : boolean, default False
+    Leave a list of tuples on columns as is (default is to convert to
+    a Multi Index on the columns)
+error_bad_lines : boolean, default True
+    Lines with too many fields (e.g. a csv line with too many commas) will by
+    default cause an exception to be raised, and no DataFrame will be returned.
+    If False, then these "bad lines" will dropped from the DataFrame that is
+    returned. (Only valid with C parser)
+warn_bad_lines : boolean, default True
+    If error_bad_lines is False, and warn_bad_lines is True, a warning for each
+    "bad line" will be output. (Only valid with C parser).
+infer_datetime_format : boolean, default False
+    If True and parse_dates is enabled for a column, attempt to infer
+    the datetime format to speed up the processing
+skip_blank_lines : boolean, default True
+    If True, skip over blank lines rather than interpreting as NaN values
+
+Returns
+-------
+result : DataFrame or TextParser
+In[122]: bikes = pd.read_csv("data/bikes.csv",parse_date="date")
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/IPython/core/interactiveshell.py", line 2883, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-122-38c841b5f925>", line 1, in <module>
+    bikes = pd.read_csv("data/bikes.csv",parse_date="date")
+TypeError: parser_f() got an unexpected keyword argument 'parse_date'
+In[123]: bikes = pd.read_csv("data/bikes.csv",parse_date="dates")
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/site-packages/IPython/core/interactiveshell.py", line 2883, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-123-6e44dae8e3c1>", line 1, in <module>
+    bikes = pd.read_csv("data/bikes.csv",parse_date="dates")
+TypeError: parser_f() got an unexpected keyword argument 'parse_date'
+In[124]: bikes = pd.read_csv("data/bikes.csv",parse_dates="date")
+In[125]: bikes
+Out[125]:
+           date  temperature   humidity  windspeed       count
+0    2011-01-03     2.716070  45.715346  21.414957  120.000000
+1    2011-01-04     2.896673  54.267219  15.136882  108.000000
+2    2011-01-05     4.235654  45.697702  17.034578   82.000000
+3    2011-01-06     3.112643  50.237349  10.091568   88.000000
+4    2011-01-07     2.723918  49.144928  15.738204  148.000000
+5    2011-01-08     1.967445  48.851252  17.035029  112.333333
+6    2011-01-09     1.210973  48.557576  18.331855   76.666667
+7    2011-01-10     0.454501  48.263900  19.628680   41.000000
+8    2011-01-11     1.361393  59.623460  12.414597   43.000000
+9    2011-01-12     1.541997  54.775880  25.432188   25.000000
+10   2011-01-13     1.158189  47.565957  25.173470   38.000000
+11   2011-01-14     0.953048  51.329770  12.729596   54.000000
+12   2011-01-15     1.645921  55.850225  13.090300   42.750000
+13   2011-01-16     2.338794  60.370679  13.451004   31.500000
+14   2011-01-17     3.031667  64.891133  13.811708   20.250000
+15   2011-01-18     3.724539  69.411587  14.172412    9.000000
+16   2011-01-19     7.475045  62.715350  18.562278   78.000000
+17   2011-01-20     5.959733  51.358079  17.676844   83.000000
+18   2011-01-21     1.779077  46.821447  28.899955   75.000000
+19   2011-01-22     0.452718  47.466458  24.265518   78.666667
+20   2011-01-23    -0.873641  48.111470  19.631082   82.333333
+21   2011-01-24    -2.200000  48.756481  14.996645   86.000000
+22   2011-01-25     4.062848  55.748088  12.961280  186.000000
+23   2011-01-26     3.765915  69.458098  24.663452   34.000000
+24   2011-01-27     2.648318  59.686889  11.822905   15.000000
+25   2011-01-28     3.069429  65.579933  12.497912   38.000000
+26   2011-01-29     2.694496  62.056845  14.017077   39.333333
+27   2011-01-30     2.319563  58.533757  15.536242   40.666667
+28   2011-01-31     1.944630  55.010668  17.055406   42.000000
+29   2011-02-01     2.507948  67.619156   7.498521   47.000000
+..          ...          ...        ...        ...         ...
+699  2012-12-02    12.886051  61.959077   9.026754  490.666667
+700  2012-12-03    15.438592  64.153728   9.603348  555.000000
+701  2012-12-04    16.597565  62.269280  16.123607  551.000000
+702  2012-12-05    14.734904  48.380206  26.815586  331.000000
+703  2012-12-06     5.669952  49.706298  16.168189  340.000000
+704  2012-12-07     8.898565  63.967628  13.018630  349.000000
+705  2012-12-08    10.802619  66.961024  14.438311  342.333333
+706  2012-12-09    12.706673  69.954419  15.857993  335.666667
+707  2012-12-10    14.610726  72.947815  17.277674  329.000000
+708  2012-12-11    10.512872  54.615186  24.819453  282.000000
+709  2012-12-12     7.739593  51.358079  15.325268  310.000000
+710  2012-12-13     7.656791  48.426717  16.123607  425.000000
+711  2012-12-14     6.953152  57.197576  13.063497  429.000000
+712  2012-12-15     8.802005  62.114188  12.279551  356.666667
+713  2012-12-16    10.650858  67.030799  11.495604  284.333333
+714  2012-12-17    12.499710  71.947411  10.711657  212.000000
+715  2012-12-18    13.368952  58.500386  19.495790  433.000000
+716  2012-12-19     9.478076  56.220456  16.834280  333.000000
+717  2012-12-20     9.353899  58.593463  13.151520  314.000000
+718  2012-12-21     9.188346  52.381767  30.407969  221.000000
+719  2012-12-22     7.609421  56.748790  23.342550  205.333333
+720  2012-12-23     6.030497  61.115812  16.277130  189.666667
+721  2012-12-24     4.451573  65.482835   9.211711  174.000000
+722  2012-12-25     4.750319  66.377012  17.747048   91.500000
+723  2012-12-26     5.049065  67.271190  26.282385    9.000000
+724  2012-12-27     5.587201  57.755931  28.678187  247.000000
+725  2012-12-28     5.545775  54.242931  14.792709  644.000000
+726  2012-12-29     4.924888  54.010283  14.777848  575.666667
+727  2012-12-30     4.304001  53.777635  14.762987  507.333333
+728  2012-12-31     3.683114  53.544987  14.748127  439.000000
+
+[729 rows x 5 columns]
+In[126]: bikes.plot('date','count')
+Out[126]: <matplotlib.axes.AxesSubplot at 0x118400c50>
+2015-09-26 11:22:44.183 Python[63422:627588] IMK Stall detected, *please Report* your user scenario in <rdar://problem/16792073> - (imkxpc_uniqueClientIdentifierStringWithReply:) block performed very slowly (1664.59 secs)
+2015-09-26 11:22:44.183 Python[63422:627588] IMK Stall detected, *please Report* your user scenario in <rdar://problem/16792073> - (imkxpc_uniqueClientIdentifierStringWithReply:) block performed very slowly (1362.59 secs)
+2015-09-26 11:22:44.184 Python[63422:627588] IMK Stall detected, *please Report* your user scenario in <rdar://problem/16792073> - (imkxpc_uniqueClientIdentifierStringWithReply:) block performed very slowly (504.82 secs)
+2015-09-26 11:22:44.184 Python[63422:627588] IMK Stall detected, *please Report* your user scenario in <rdar://problem/16792073> - (imkxpc_uniqueClientIdentifierStringWithReply:) block performed very slowly (69.26 secs)
+In[127]: plt.close()
